@@ -40,7 +40,7 @@ Again, this is not required. We respect that everyone has different amounts of t
 3. Run `docker-compose up`
 4. Code
 5. Push your solution to a new branch
-6. Create a Pull Request when your read and reach out to us for setting up the interview
+6. Create a Pull Request when your ready and reach out to us for setting up the interview
 
 To cleanup the Docker containers run `docker-compose down -v --rmi all --remove-orphans`
 
