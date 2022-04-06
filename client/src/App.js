@@ -1,43 +1,53 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./App.module.css";
 import logo from "./assets/logo.svg";
-
-import TrackRow from "./components/TrackRow";
 import AudioPlayer from "./components/AudioPlayer";
+import MainView from "./components/MainView";
 
 function App() {
   const [tracks, setTracks] = useState([]);
   const [currentTrack, setCurrentTrack] = useState();
+  const [playlists, setPlaylists] = useState([]);
+  const [active, setActive] = useState("Tracks")
 
   useEffect(() => {
     fetch("http://localhost:8000/tracks")
       .then((res) => res.json())
       .then((data) => setTracks(data));
+    refreshPlaylists();
   }, []);
 
   const handlePlay = (track) => setCurrentTrack(track);
 
+  const refreshPlaylists = (then) => {
+    fetch("http://localhost:8000/playlists")
+      .then((res) => res.json())
+      .then((data) => setPlaylists(data));
+  }
   return (
     <>
       <main className={styles.app}>
         <nav>
-          <img src={logo} className={styles.logo} alt="Logo" />
+          <img src={logo} className={styles.logo} alt="Logo"/>
           <ul className={styles.menu}>
             <li>
-              <a href="#" className={styles.active}>
+              <a href="#" className={active === "Tracks" ? styles.active : ""}
+                 onClick={() => setActive("Tracks")}>
                 Tracks
               </a>
             </li>
             <li>
-              <a href="#">Playlists</a>
+              <a href="#" className={active === "Playlists" ? styles.active : ""}
+                 onClick={() => setActive("Playlists")}>
+                Playlists
+              </a>
             </li>
           </ul>
         </nav>
-        {tracks.map((track, ix) => (
-          <TrackRow key={ix} track={track} handlePlay={handlePlay} />
-        ))}
+        <MainView active={active} tracks={tracks} playlists={playlists} handlePlay={handlePlay}
+                  refreshPlaylists={refreshPlaylists}/>
       </main>
-      {currentTrack && <AudioPlayer track={currentTrack} />}
+      {currentTrack && <AudioPlayer track={currentTrack}/>}
     </>
   );
 }
