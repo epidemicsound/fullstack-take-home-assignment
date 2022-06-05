@@ -33,6 +33,9 @@ class Track(models.Model):
     length = models.IntegerField(default=0)
     bpm = models.IntegerField(default=0)
 
+    def __str__(self):
+        return f"{self.title}"
+
     @property
     def audio(self):
         return "{}{}.{}".format(settings.ASSETS_BASE, self.id, "mp3")
@@ -48,3 +51,8 @@ class Track(models.Model):
     @property
     def spotify(self):
         return "{}{}/{}".format(settings.DSP_BASE, self.id, "spotify")
+
+
+class Playlist(models.Model):
+    name = models.CharField(max_length=200, null=False)
+    tracks = models.ManyToManyField(Track, related_name="track")
