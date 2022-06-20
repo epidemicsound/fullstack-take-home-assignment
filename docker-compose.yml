@@ -31,6 +31,8 @@ services:
     command: npm start
     volumes:
       - ./client/:/code/
+    environment:
+      - NPM_CONFIG_PREFIX=~/.npm-other
     ports:
       - "3000:3000"
     depends_on:
