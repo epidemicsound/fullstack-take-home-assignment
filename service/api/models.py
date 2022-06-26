@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django import db
 
 
 class Artist(models.Model):
@@ -48,3 +49,28 @@ class Track(models.Model):
     @property
     def spotify(self):
         return "{}{}/{}".format(settings.DSP_BASE, self.id, "spotify")
+
+
+class Playlist(models.Model):
+    id = models.CharField(primary_key=True, max_length=10)
+    title = models.CharField(max_length=200, null=False)
+    tracks = models.ManyToManyField(Track, related_name='track', through='Listing')
+
+    @property
+    def ordered_tracks(self):
+        return self.tracks.order_by('api_listing.index').values_list('id', flat=True)
+
+    def append_track(self, track):
+        max_index = self.listing_set.all().aggregate(db.models.Max('index'))['index__max']
+        if max_index is None:
+            max_index = 0
+
+        listing = Listing(track=track, playlist=self, index=(max_index + 1))
+        listing.save()
+        return listing
+
+
+class Listing(models.Model):
+    playlist = models.ForeignKey(Playlist, models.CASCADE)
+    track = models.ForeignKey(Track, models.CASCADE)
+    index = models.IntegerField(default=1)
