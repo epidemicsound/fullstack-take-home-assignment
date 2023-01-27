@@ -1,6 +1,6 @@
-Django>=4.0.6,<5.0
+Django>=4.1.5,<5.0
 djangorestframework
 django-cors-headers
 requests
-psycopg2-binary>=2.8
+psycopg2-binary>=2.9.5
 pip-tools
