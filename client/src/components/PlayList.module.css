@@ -1,0 +1,10 @@
+.trackRow {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  border-bottom: 1px solid #333;
+}
+
+.trackRow:last-child {
+  border-bottom: none;
+}

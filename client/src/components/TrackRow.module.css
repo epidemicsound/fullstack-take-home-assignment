@@ -1,5 +1,6 @@
 .trackRow {
   display: flex;
+  flex-direction: row;
   align-items: center;
   height: 5rem;
   border-bottom: 1px solid #333;
@@ -19,6 +20,36 @@
   margin-right: 1rem;
   padding: 0;
 }
+.playlist {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 40%;
+  background: #333;
+  box-shadow: 0;
+  border: 0;
+  margin-right: 1rem;
+  padding: 0;
+}
+
+.playlist:hover {
+  cursor: pointer;
+}
+
+.removeButton {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: #333;
+  box-shadow: 0;
+  border: 0;
+  margin-right: 1rem;
+  padding: 0;
+  margin-left: auto;
+}
+
+.removeButton:hover {
+  cursor: pointer;
+}
 
 .trackTitle {
   font-weight: 600;
@@ -26,4 +57,8 @@
 
 .trackArtist {
   color: #767676;
+}
+
+.removePlaylist {
+  margin-left: auto;
 }
