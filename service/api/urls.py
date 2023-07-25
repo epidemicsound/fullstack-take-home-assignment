@@ -18,6 +18,7 @@ urlpatterns = [
         name="api-docs",
     ),
     path("api/", include("track.urls")),
+    path("api/", include("playlist.urls")),
 ]
 
 if settings.DEBUG:

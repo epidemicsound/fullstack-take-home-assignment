@@ -38,10 +38,7 @@ class TrackAddSerializer(serializers.ModelSerializer):
     def add_track(self, playlist):
         """Add track to playlist."""
         track_id = self.validated_data.get("track_id")
-        track = Track.get_record_by_id(Track, track_id)
-
-        if track is None:
-            raise serializers.ValidationError("Track does not exist")
+        track = self._get_track(track_id)
 
         if track in playlist.track_ids.all():
             raise serializers.ValidationError("Track already exists in playlist")
@@ -49,3 +46,10 @@ class TrackAddSerializer(serializers.ModelSerializer):
         playlist.track_ids.add(track_id)
 
         return playlist
+
+    def _get_track(self, track_id):
+        """Return track object."""
+        try:
+            return Track.objects.get(id=track_id)
+        except Track.DoesNotExist:
+            raise serializers.ValidationError("Track does not exist")
