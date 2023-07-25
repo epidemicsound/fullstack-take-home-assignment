@@ -1,6 +1,8 @@
 from drf_spectacular.utils import (
     extend_schema_view,
     extend_schema,
+    OpenApiParameter,
+    OpenApiTypes,
 )
 
 from rest_framework import permissions, status
@@ -14,7 +16,32 @@ from core.custom_model_viewset import CustomModelViewSet
 from playlist.serializers import PlaylistSerializer, TrackAddSerializer
 
 
-@extend_schema_view(list=extend_schema(parameters=[]))
+@extend_schema_view(
+    list=extend_schema(
+        parameters=[
+            OpenApiParameter(
+                "filter",
+                OpenApiTypes.STR,
+                description="An object describing the filter criteria",
+            ),
+            OpenApiParameter(
+                "limit",
+                OpenApiTypes.NUMBER,
+                description="Number of results to return",
+            ),
+            OpenApiParameter(
+                "sort_by",
+                OpenApiTypes.STR,
+                description="Field to sort by",
+            ),
+            OpenApiParameter(
+                "skip",
+                OpenApiTypes.NUMBER,
+                description="Number of results to skip",
+            ),
+        ]
+    )
+)
 class PlaylistViewSet(CustomModelViewSet):
     queryset = Playlist.objects.all()
     serializer_class = PlaylistSerializer
