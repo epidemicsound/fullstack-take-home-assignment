@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from core.models import models
+from core.models import Track
 
 
 class TrackSerializer(serializers.ModelSerializer):
@@ -10,7 +10,7 @@ class TrackSerializer(serializers.ModelSerializer):
     featured_artists = serializers.StringRelatedField(many=True)
 
     class Meta:
-        model = models.Track
+        model = Track
         fields = [
             "id",
             "external_id",

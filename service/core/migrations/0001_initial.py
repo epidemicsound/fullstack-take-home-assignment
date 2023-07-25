@@ -78,18 +78,23 @@ class Migration(migrations.Migration):
                 (
                     "featured_artists",
                     models.ManyToManyField(
-                        related_name="featured_artist", to="api.Artist"
+                        related_name="featured_artist", to="core.Artist"
                     ),
                 ),
                 (
                     "genres",
-                    models.ManyToManyField(related_name="genre", to="api.Genre"),
+                    models.ManyToManyField(related_name="genre", to="core.Genre"),
                 ),
                 (
                     "main_artists",
-                    models.ManyToManyField(related_name="main_artist", to="api.Artist"),
+                    models.ManyToManyField(
+                        related_name="main_artist", to="core.Artist"
+                    ),
                 ),
-                ("moods", models.ManyToManyField(related_name="mood", to="api.Mood")),
+                (
+                    "moods",
+                    models.ManyToManyField(related_name="mood", to="core.Mood"),
+                ),
             ],
         ),
     ]
