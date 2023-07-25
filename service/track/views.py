@@ -1,9 +1,11 @@
 from rest_framework import permissions, viewsets
 
-from . import models, serializers
+from core.models import Track
+
+from track.serializers import TrackSerializer
 
 
 class TrackViewSet(viewsets.ModelViewSet):
-    queryset = models.Track.objects.all()
-    serializer_class = serializers.TrackSerializer
+    queryset = Track.objects.all()
+    serializer_class = TrackSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]

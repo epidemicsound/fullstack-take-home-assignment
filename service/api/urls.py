@@ -1,11 +1,25 @@
-from django.urls import include, path
-from rest_framework import routers
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularSwaggerView,
+)
 
-from . import views
+from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 
-router = routers.DefaultRouter()
-router.register(r"tracks", views.TrackViewSet)
 
 urlpatterns = [
-    path("", include(router.urls)),
+    path("api/schema/", SpectacularAPIView.as_view(), name="api-schema"),
+    path(
+        "api/docs/",
+        SpectacularSwaggerView.as_view(url_name="api-schema"),
+        name="api-docs",
+    ),
+    path("api/", include("track.urls")),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT,
+    )
