@@ -13,6 +13,7 @@ class TrackSerializer(serializers.ModelSerializer):
         model = models.Track
         fields = [
             "id",
+            "external_id",
             "title",
             "length",
             "bpm",
