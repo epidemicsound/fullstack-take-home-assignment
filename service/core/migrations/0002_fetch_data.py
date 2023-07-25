@@ -1,16 +1,18 @@
 import requests
 from django.conf import settings
 from django.db import migrations
+import uuid
 
 
 def fill_track_data(apps, schema_editor):
     r = requests.get(f"{settings.ASSETS_BASE}tracks.json")
     tracks = r.json()
 
-    Track = apps.get_model("api", "Track")
+    Track = apps.get_model("core", "Track")
     for track_data in tracks:
         track = Track.objects.create(
-            id=track_data["id"],
+            id=uuid.uuid4(),
+            external_id=track_data["id"],
             title=track_data["title"],
             length=track_data["length"],
             bpm=track_data["bpm"],
@@ -27,8 +29,7 @@ def fill_track_data(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
-    dependencies = [("api", "0001_initial")]
+    dependencies = [("core", "0001_initial")]
 
     operations = [
         migrations.RunPython(fill_track_data),
