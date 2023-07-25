@@ -29,3 +29,9 @@ data/
 
 # Editor/IDE
 .idea/
+
+# Virtual Environment
+.venv
+
+# VSCode
+.vscode
