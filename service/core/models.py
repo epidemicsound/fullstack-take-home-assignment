@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+import uuid
 
 
 class Artist(models.Model):
@@ -24,7 +25,10 @@ class Mood(models.Model):
 
 
 class Track(models.Model):
-    id = models.CharField(primary_key=True, max_length=10)
+    id = models.UUIDField(
+        primary_key=True, default=uuid.uuid4, editable=False, unique=True
+    )
+    external_id = models.CharField(max_length=10, null=False)
     title = models.CharField(max_length=200, null=False)
     genres = models.ManyToManyField(Genre, related_name="genre")
     moods = models.ManyToManyField(Mood, related_name="mood")
