@@ -24,6 +24,7 @@ class PlaylistSerializer(serializers.ModelSerializer):
 
         playlist = Playlist.objects.create(**validated_data)
         playlist.track_ids.set(track_ids)
+        playlist.save()
 
         return playlist
 

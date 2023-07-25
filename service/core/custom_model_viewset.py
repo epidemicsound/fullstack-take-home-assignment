@@ -9,8 +9,10 @@ class CustomModelViewSet(viewsets.ModelViewSet):
         super(CustomModelViewSet, self).__init__(**kwargs)
 
     def list(self, request, *args, **kwargs):
+        initial_queryset = self.queryset
+        self.queryset = self.__update_queryset()
         resp = super(CustomModelViewSet, self).list(request, *args, **kwargs)
-        count = self.__get_count_queryset().count()
+        count = self.__get_count_queryset(initial_queryset).count()
         response = {
             "success": self.__has_succeeded(resp.status_code),
             "result": resp.data,
@@ -52,7 +54,7 @@ class CustomModelViewSet(viewsets.ModelViewSet):
         resp = super(CustomModelViewSet, self).destroy(request, *args, **kwargs)
         return Response(self.__get_custom_response(resp.data, resp.status_code))
 
-    def get_queryset(self):
+    def __update_queryset(self):
         sort = self.request.query_params.get("sort_by", None)
         limit = self.request.query_params.get("limit", None)
         skip = self.request.query_params.get("skip", None)
@@ -79,10 +81,10 @@ class CustomModelViewSet(viewsets.ModelViewSet):
             queryset = queryset[int(skip) :]
         return queryset
 
-    def __get_count_queryset(self):
+    def __get_count_queryset(self, initial_queryset):
         filter = self.request.query_params.get("filter", None)
 
-        queryset = self.queryset
+        queryset = initial_queryset
 
         if filter is not None:
             filter = json.loads(filter)
