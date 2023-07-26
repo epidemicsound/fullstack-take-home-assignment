@@ -2,6 +2,28 @@
 
 Epidemic Sound coding challenge - Hamid Tehrani
 
+## Notes
+
+I have done some restructuring to make the project more readable and maintainable before working on adding the features but because of lack of time I was only able to deliver these parts:
+
+### Backend
+
+- Create, delete and list playlists
+- Add and remove tracks to a playlist
+- Documentation on `http://localhost:8000/api/docs/`
+- You can run the tests with this command `docker-compose run --rm service sh -c "python manage.py test"`
+- Filter, sorting and pagination of tracks and playlists are provided(Filters are very simple and only supports simple text field inclusion)
+
+### Frontend
+
+- List and delete playlists
+- Remove tracks from a playlist
+
+### Remaining Parts
+
+- Reordering tracks in not something complicated, it can be done by adding an interger field like "order" to the joint table and define a PATCH endpoint to get the new orders as an array of object with id of the track and its order and then handle the reordering on the backend side
+- Users and permissions are also supported by django out of the box as I read but since I'm not an expert in django I did not have enough time to go through it and probably do some customization to make it compatible with the requirements
+
 ## The project
 
 Below, we have defined what is required of your project, since we believe this will serve as a good basis for you to show your problem solving skills and describe your reasoning and decisions.
@@ -56,25 +78,3 @@ Some of the things we will look at in the evaluation:
 - **Infrastructure and operations** - How you would run a system and what's important to think about.
 
 In this we also try to understand how you solve problems generally and how you communicate your solutions. Problem solving and communication are both things we value highly.
-
-## Notes
-
-I have done some restructuring to make the project more readable and maintainable before working on adding the features but because of lack of time I was only able to deliver these parts:
-
-### Backend
-
-- Create, delete and list playlists
-- Add and remove tracks to a playlist
-- Documentation on `http://localhost:8000/api/docs/`
-- You can run the tests with this command `docker-compose run --rm service sh -c "python manage.py test"`
-- Filter, sorting and pagination of tracks and playlists are provided(Filters are very simple and only supports simple text field inclusion)
-
-### Frontend
-
-- List and delete playlists
-- Remove tracks from a playlist
-
-### Remaining Parts
-
-- Reordering tracks in not something complicated, it can be done by adding an interger field like "order" to the joint table and define a PATCH endpoint to get the new orders as an array of object with id of the track and its order and then handle the reordering on the backend side
-- Users and permissions are also supported by django out of the box as I read but since I'm not an expert in django I did not have enough time to go through it and probably do some customization to make it compatible with the requirements
