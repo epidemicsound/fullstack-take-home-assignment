@@ -1,6 +1,6 @@
 # Interview Coding Base
 
-Epidemic Sound coding challenge
+Epidemic Sound coding challenge - Hamid Tehrani
 
 ## The project
 
