@@ -1,0 +1,36 @@
+.playlistTitle {
+    width: 100%;
+    font-weight: 600;
+    cursor: pointer;
+}
+  
+  
+.playlistDelete {
+    text-align: right;
+}
+  
+.playlistDeleteBtn {
+    margin-top: 1rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: #F00;
+    box-shadow: 0;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    color: white;
+}
+  
+  
+.playlistTable {
+    display: table;
+    width: 100%;
+}
+  
+.playlistTableRow {
+    min-height: 5rem;
+    display: table-row;
+    width: 100%;
+  }
+  

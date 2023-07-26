@@ -18,6 +18,7 @@
   border: 0;
   margin-right: 1rem;
   padding: 0;
+  cursor: pointer;
 }
 
 .trackTitle {
