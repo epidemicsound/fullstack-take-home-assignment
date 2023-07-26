@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "../css/TrackRow.module.css";
+import styles from "../css/PlaylistTrack.module.css";
 
-function TrackRow({ track, handlePlay }) {
+function PlaylistTrack({ track, handlePlay, handleDelete }) {
   return (
     <div className={styles.trackRow}>
       <button className={styles.trackPlay} onClick={() => handlePlay(track)}>
@@ -25,4 +25,4 @@ function TrackRow({ track, handlePlay }) {
   );
 }
 
-export default TrackRow;
+export default PlaylistTrack;

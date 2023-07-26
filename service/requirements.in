@@ -1,6 +1,7 @@
 Django>=4.1.5,<5.0
 djangorestframework
 django-cors-headers
+drf-spectacular
 requests
 psycopg2-binary>=2.9.5
 pip-tools
