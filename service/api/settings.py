@@ -71,11 +71,10 @@ DATABASES = {
         "NAME": "database",
         "USER": "user",
         "PASSWORD": "password",
-        "HOST": "db",
+        "HOST": "localhost",
         "PORT": 5432,
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -122,3 +121,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 ASSETS_BASE = "https://storage.googleapis.com/tech-coding-interview-assets/"
 DSP_BASE = "http://link.epidemicsound.com/"
+
