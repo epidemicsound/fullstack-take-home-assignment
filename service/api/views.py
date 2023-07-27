@@ -19,8 +19,24 @@ class PlaylistViewSet(viewsets.ModelViewSet):
             return serializers.CreatePlaylistSerializer
         elif self.action == 'retrieve':
             return serializers.GetOnePlaylistSerializer
-        return super().get_serializer_class()
+        elif self.action == 'update':
+            return serializers.UpdatePlaylistSerializer
+        else:
+            return super().get_serializer_class()
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        # Check for the 'sort' query parameter in the URL
+        sort_param = self.request.query_params.get('sort')
+
+        if sort_param == 'date':
+            queryset = queryset.order_by('-created_at')  # Sort by date in descending order
+        elif sort_param == 'name':
+            queryset = queryset.order_by('name')  # Sort by name in ascending order
+
+        return queryset
+    
 
 @api_view(['POST'])
 def add_track_to_playlist(request, playlist_id, track_id):

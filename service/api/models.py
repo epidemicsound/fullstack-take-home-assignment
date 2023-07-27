@@ -62,6 +62,7 @@ class Playlist(models.Model):
     id = models.CharField(primary_key=True, max_length=10,default=generate_custom_id)
     name = models.CharField(max_length=200, null=False)
     tracks = models.ManyToManyField(Track, related_name="playlists")
+    created_at = models.DateTimeField(auto_now_add=True)  
 
     def __str__(self):
         return f"{self.name}"   

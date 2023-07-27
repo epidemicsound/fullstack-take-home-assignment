@@ -56,6 +56,30 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -86,6 +110,24 @@
         "description": "django.conf",
         "isExtraImport": true,
         "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "api.models",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "api.models",
+        "description": "api.models",
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "django.utils.timezone",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.utils.timezone",
+        "description": "django.utils.timezone",
+        "detail": "django.utils.timezone",
         "documentation": {}
     },
     {
@@ -257,6 +299,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "api.migrations.0005_auto_20230727_2100",
+        "description": "api.migrations.0005_auto_20230727_2100",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('api', '0004_alter_playlist_id'),\n    ]\n    operations = [\n    ]",
+        "detail": "api.migrations.0005_auto_20230727_2100",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "api.migrations.0006_playlist_created_at_alter_playlist_id",
+        "description": "api.migrations.0006_playlist_created_at_alter_playlist_id",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('api', '0005_auto_20230727_2100'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='playlist',\n            name='created_at',\n            field=models.DateTimeField(auto_now_add=True, default=django.utils.timezone.now),\n            preserve_default=False,",
+        "detail": "api.migrations.0006_playlist_created_at_alter_playlist_id",
+        "documentation": {}
+    },
+    {
         "label": "ApiConfig",
         "kind": 6,
         "importPath": "api.apps",
@@ -306,7 +366,7 @@
         "kind": 6,
         "importPath": "api.models",
         "description": "api.models",
-        "peekOfCode": "class Playlist(models.Model):\n    id = models.CharField(primary_key=True, max_length=10,default=generate_custom_id)\n    name = models.CharField(max_length=200, null=False)\n    tracks = models.ManyToManyField(Track, related_name=\"playlists\")\n    def __str__(self):\n        return f\"{self.name}\"",
+        "peekOfCode": "class Playlist(models.Model):\n    id = models.CharField(primary_key=True, max_length=10,default=generate_custom_id)\n    name = models.CharField(max_length=200, null=False)\n    tracks = models.ManyToManyField(Track, related_name=\"playlists\")\n    created_at = models.DateTimeField(auto_now_add=True)  \n    def __str__(self):\n        return f\"{self.name}\"",
         "detail": "api.models",
         "documentation": {}
     },
@@ -329,11 +389,20 @@
         "documentation": {}
     },
     {
+        "label": "UpdatePlaylistSerializer",
+        "kind": 6,
+        "importPath": "api.serializers",
+        "description": "api.serializers",
+        "peekOfCode": "class UpdatePlaylistSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = models.Playlist\n        fields = ['name', 'created_at']\nclass GetmanyPlaylistNameSerializer(serializers.ModelSerializer):\n    tracks = serializers.SerializerMethodField()\n    def get_tracks(self, playlist):\n        return list(playlist.tracks.values_list('id', flat=True))\n    class Meta:\n        model = models.Playlist",
+        "detail": "api.serializers",
+        "documentation": {}
+    },
+    {
         "label": "GetmanyPlaylistNameSerializer",
         "kind": 6,
         "importPath": "api.serializers",
         "description": "api.serializers",
-        "peekOfCode": "class GetmanyPlaylistNameSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = models.Playlist\n        fields = ['id', 'name']\nclass CreatePlaylistSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = models.Playlist\n        fields = '__all__'\nclass GetOnePlaylistSerializer(serializers.ModelSerializer):\n    tracks = TrackSerializer(many=True, read_only=True)",
+        "peekOfCode": "class GetmanyPlaylistNameSerializer(serializers.ModelSerializer):\n    tracks = serializers.SerializerMethodField()\n    def get_tracks(self, playlist):\n        return list(playlist.tracks.values_list('id', flat=True))\n    class Meta:\n        model = models.Playlist\n        fields = ['id', 'name', 'tracks', 'created_at']\nclass CreatePlaylistSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = models.Playlist",
         "detail": "api.serializers",
         "documentation": {}
     },
@@ -450,7 +519,7 @@
         "kind": 5,
         "importPath": "api.settings",
         "description": "api.settings",
-        "peekOfCode": "DATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"database\",\n        \"USER\": \"user\",\n        \"PASSWORD\": \"password\",\n        \"HOST\": \"localhost\",\n        \"PORT\": 5432,\n    }\n}",
+        "peekOfCode": "DATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"database\",\n        \"USER\": \"user\",\n        \"PASSWORD\": \"password\",\n        \"HOST\": \"db\",\n        \"PORT\": 5432,\n    }\n}",
         "detail": "api.settings",
         "documentation": {}
     },
@@ -576,7 +645,7 @@
         "kind": 6,
         "importPath": "api.views",
         "description": "api.views",
-        "peekOfCode": "class PlaylistViewSet(viewsets.ModelViewSet):\n    queryset = models.Playlist.objects.all()\n    def get_serializer_class(self):\n        if self.action == 'list':\n            return serializers.GetmanyPlaylistNameSerializer\n        elif self.action == 'create':\n            return serializers.CreatePlaylistSerializer\n        elif self.action == 'retrieve':\n            return serializers.GetOnePlaylistSerializer\n        return super().get_serializer_class()",
+        "peekOfCode": "class PlaylistViewSet(viewsets.ModelViewSet):\n    queryset = models.Playlist.objects.all()\n    def get_serializer_class(self):\n        if self.action == 'list':\n            return serializers.GetmanyPlaylistNameSerializer\n        elif self.action == 'create':\n            return serializers.CreatePlaylistSerializer\n        elif self.action == 'retrieve':\n            return serializers.GetOnePlaylistSerializer\n        elif self.action == 'update':",
         "detail": "api.views",
         "documentation": {}
     },

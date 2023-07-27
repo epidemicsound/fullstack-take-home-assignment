@@ -26,13 +26,20 @@ class TrackSerializer(serializers.ModelSerializer):
             "spotify",
         ]
 
-
-
-
-class GetmanyPlaylistNameSerializer(serializers.ModelSerializer):
+class UpdatePlaylistSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Playlist
-        fields = ['id', 'name']
+        fields = ['name', 'created_at']
+
+class GetmanyPlaylistNameSerializer(serializers.ModelSerializer):
+    tracks = serializers.SerializerMethodField()
+
+    def get_tracks(self, playlist):
+        return list(playlist.tracks.values_list('id', flat=True))
+
+    class Meta:
+        model = models.Playlist
+        fields = ['id', 'name', 'tracks', 'created_at']
 
 class CreatePlaylistSerializer(serializers.ModelSerializer):
     class Meta:

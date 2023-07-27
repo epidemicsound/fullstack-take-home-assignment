@@ -15,4 +15,5 @@ urlpatterns = [
 
     # API for removing a track from a playlist
     path('playlists/<str:playlist_id>/remove_track/<str:track_id>/', views.remove_track_from_playlist, name='remove-track-from-playlist'),
+
 ]

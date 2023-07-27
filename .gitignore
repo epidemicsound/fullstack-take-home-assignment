@@ -30,4 +30,4 @@ data/
 # Editor/IDE
 .idea/
 
-service/venv
+venv/*

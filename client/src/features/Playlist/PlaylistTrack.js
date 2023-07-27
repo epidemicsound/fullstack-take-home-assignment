@@ -1,33 +1,69 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import TrackRow from "../Track/TrackRow";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useNavigate } from "react-router-dom";
+import { IconButton } from "@mui/material";
 
-function PlaylistTracks() {
-  const { playlistId } = useParams();
-  const [tracks, setTracks] = useState([]);
 
+function PlaylistDetail({ handlePlay, fetchPlaylist, showToast }) {
+  const [playlist, setPlaylist] = useState(null);
+  const { id } = useParams();
+
+
+
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
+
+  const handleDeleteTrackFromPlaylist = ( trackId) => {
+    fetch(`http://0.0.0.0:8000/playlists/${id}/remove_track/${trackId}/`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Call the onDelete function provided as a prop to handle any necessary updates
+        
+        fetchPlaylist()
+        showToast("Track removed from playlist")
+        fetchPlalistDetails()
+      })
+      .catch((error) => {
+        // Handle any errors here
+        console.error("Error deleting playlist:", error);
+      });
+  }
+
+  const fetchPlalistDetails = () => {
+    fetch(`http://0.0.0.0:8000/playlists/${id}/`)
+    .then((response) => response.json())
+    .then((data) => setPlaylist(data))
+    .catch((error) => console.log("Error fetching playlist details:", error));
+
+  }
   useEffect(() => {
-    // Fetch tracks for the specified playlist using the playlistId
-    // You can implement your API call here
-    // For demonstration purposes, we'll use a dummy array of tracks
-    const dummyTracks = [
-      { id: 1, title: "Track 1" },
-      { id: 2, title: "Track 2" },
-      { id: 3, title: "Track 3" },
-      // Add more tracks as needed
-    ];
-    setTracks(dummyTracks);
-  }, [playlistId]);
+    // Fetch playlist details using the API endpoint
+    fetchPlalistDetails()
+  }, [id]);
+  if (!playlist) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div>
-      <h1>Tracks for Playlist {playlistId}</h1>
-      <ul>
-        {tracks.map((track) => (
-          <li key={track.id}>{track.title}</li>
-        ))}
-      </ul>
+      <h2> <IconButton onClick={handleGoBack} style={{ color: "#fff" }}>
+        <ArrowBackIcon />
+      </IconButton>
+
+        {playlist.name}</h2>
+      {playlist.tracks.map((track) => (
+        <TrackRow  handlePlay={handlePlay} handleDeleteTrackFromPlaylist={handleDeleteTrackFromPlaylist} showAdd={false} key={track.id} track={track} />
+      ))}
     </div>
   );
 }
 
-export default PlaylistTracks;
+export default PlaylistDetail;

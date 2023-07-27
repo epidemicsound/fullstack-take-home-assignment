@@ -43,6 +43,22 @@
 }
 
 
+.deleteIcon {
+  background: transparent;
+  box-shadow: 0;
+  border: 0;
+  margin: 2rem 1rem;
+  padding: 0;
+  cursor: pointer;
+  position: absolute; 
+  top: 0;
+  right: 0; 
+}
+
+.ListView200{
+  max-height: 200px;
+  overflow-y: auto;
+}
 
 @media (max-width: 767px) {
   

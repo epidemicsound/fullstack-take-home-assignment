@@ -11,28 +11,28 @@ services:
       - POSTGRES_PASSWORD=password
     ports:
       - "5432:5432"
-  # service:
-  #   build: ./service/.
-  #   command: >
-  #     sh -c  "/wait db:5432 && python manage.py makemigrations &&
-  #             python manage.py migrate &&
-  #             python manage.py runserver 0.0.0.0:8000"
-  #   environment:
-  #     WAIT_HOSTS: db:5432
-  #     WAIT_TIMEOUT: 60
-  #     WAIT_BEFORE: 5
-  #   volumes:
-  #     - ./service/:/code/
-  #   ports:
-  #     - "8000:8000"
-  #   depends_on:
-  #     - db
-  # client:
-  #   build: ./client/.
-  #   command: npm start
-  #   volumes:
-  #     - ./client/:/code/
-  #   ports:
-  #     - "3000:3000"
-  #   depends_on:
-  #     - service
+  service:
+    build: ./service/.
+    command: >
+      sh -c  "/wait db:5432 && python manage.py makemigrations &&
+              python manage.py migrate &&
+              python manage.py runserver 0.0.0.0:8000"
+    environment:
+      WAIT_HOSTS: db:5432
+      WAIT_TIMEOUT: 60
+      WAIT_BEFORE: 5
+    volumes:
+      - ./service/:/code/
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  client:
+    build: ./client/.
+    command: npm start
+    volumes:
+      - ./client/:/code/
+    ports:
+      - "3000:3000"
+    depends_on:
+      - service
