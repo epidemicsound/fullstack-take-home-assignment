@@ -7,6 +7,7 @@ import { Button, IconButton, Dialog, DialogActions, DialogContent, DialogTitle, 
 import TextField from "@mui/material/TextField";
 import CloseIcon from '@mui/icons-material/Close';
 import styles from "./TrackRow.module.css";
+import { endpoints } from "../../services/apiConfig";
 
 
 function TrackList({ tracks, playLists, showToast, handlePlay }) {
@@ -27,7 +28,7 @@ function TrackList({ tracks, playLists, showToast, handlePlay }) {
       redirect: 'follow'
     };
 
-    fetch(`http://127.0.0.1:8000/playlists/${playlistId}/remove_track/${trackId}/`, requestOptions)
+    fetch(endpoints.removeTrack(playlistId, trackId), requestOptions)
       .then(response => response.text())
       .then(result => showToast("Removed Track from playlist"))
       .catch(error => showToast("Something went wrong!", "error"));
@@ -40,7 +41,7 @@ function TrackList({ tracks, playLists, showToast, handlePlay }) {
       redirect: 'follow'
     };
 
-    fetch(`http://127.0.0.1:8000/playlists/${playlistId}/add_track/${trackId}/`, requestOptions)
+    fetch(endpoints.addTrack(playlistId, trackId), requestOptions)
       .then(response => response.text())
       .then(result => showToast("Track added to playlist"))
       .catch(error => showToast("Something went wrong!", "error"));
@@ -67,8 +68,6 @@ function TrackList({ tracks, playLists, showToast, handlePlay }) {
 
 
   const handleCreatePlayList = () => {
-    // setPlatLists([...playLists, {title: PlayListName}])
-
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -83,7 +82,7 @@ function TrackList({ tracks, playLists, showToast, handlePlay }) {
       redirect: 'follow'
     };
 
-    fetch("http://127.0.0.1:8000/playlists/", requestOptions)
+    fetch(endpoints.playlists("name"), requestOptions)
       .then(response => response.json())
       .then(result => {
         playLists.push(result);
@@ -92,9 +91,6 @@ function TrackList({ tracks, playLists, showToast, handlePlay }) {
         showToast("Playlist created successfully")
       })
       .catch(error => console.log('error', error));
-
-    
-
   }
 
   const handleAddToPlayButtonClick = (track) => {
@@ -146,20 +142,18 @@ function TrackList({ tracks, playLists, showToast, handlePlay }) {
                   />
                 </ListItem>
               ))}
-              
-
 
 
             </div>
             {!showCreatePlaylistPopup ? <ListItem>
-                <CreateNewPlaylistButton onClick={handleNewPlayButtonClick} />
-              </ListItem> : <TextField
-                label="Enter playlist name"
-                variant="outlined"
-                fullWidth
-                value={playListName}
-                onChange={(e) => setPlayListName(e.target.value)}
-              />}
+              <CreateNewPlaylistButton onClick={handleNewPlayButtonClick} />
+            </ListItem> : <TextField
+              label="Enter playlist name"
+              variant="outlined"
+              fullWidth
+              value={playListName}
+              onChange={(e) => setPlayListName(e.target.value)}
+            />}
           </DialogContent>
           <DialogActions>
 

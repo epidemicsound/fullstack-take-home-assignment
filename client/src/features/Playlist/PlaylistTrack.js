@@ -4,6 +4,7 @@ import TrackRow from "../Track/TrackRow";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 import { IconButton } from "@mui/material";
+import { endpoints } from "../../services/apiConfig";
 
 
 function PlaylistDetail({ handlePlay, fetchPlaylist, showToast }) {
@@ -20,7 +21,7 @@ function PlaylistDetail({ handlePlay, fetchPlaylist, showToast }) {
 
 
   const handleDeleteTrackFromPlaylist = ( trackId) => {
-    fetch(`http://0.0.0.0:8000/playlists/${id}/remove_track/${trackId}/`, {
+    fetch(endpoints.removeTrack(id,trackId), {
       method: "DELETE",
     })
       .then((response) => response.json())
@@ -38,7 +39,7 @@ function PlaylistDetail({ handlePlay, fetchPlaylist, showToast }) {
   }
 
   const fetchPlalistDetails = () => {
-    fetch(`http://0.0.0.0:8000/playlists/${id}/`)
+    fetch(endpoints.playlistById(id))
     .then((response) => response.json())
     .then((data) => setPlaylist(data))
     .catch((error) => console.log("Error fetching playlist details:", error));
@@ -48,6 +49,7 @@ function PlaylistDetail({ handlePlay, fetchPlaylist, showToast }) {
     // Fetch playlist details using the API endpoint
     fetchPlalistDetails()
   }, [id]);
+  
   if (!playlist) {
     return <p>Loading...</p>;
   }

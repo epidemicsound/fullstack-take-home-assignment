@@ -3,7 +3,7 @@ import PlaylistRow from "./PlaylistRow";
 import SortButton from "../../components/SortButton";
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-
+import { endpoints } from "../../services/apiConfig";
 
 function PlaylistList({ playLists, showToast, fetchPlaylist }) {
     const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
@@ -47,7 +47,7 @@ function PlaylistList({ playLists, showToast, fetchPlaylist }) {
             redirect: 'follow'
         };
 
-        fetch("http://127.0.0.1:8000/playlists/" + selectedPlayList.id + "/", requestOptions)
+        fetch(endpoints.playlistById(selectedPlayList.id), requestOptions)
             .then(response => response.text())
             .then(result => {
                 showToast("Playlist updated successfully")
@@ -68,7 +68,7 @@ function PlaylistList({ playLists, showToast, fetchPlaylist }) {
             redirect: 'follow'
         };
 
-        fetch("http://127.0.0.1:8000/playlists/" + selectedPlayList.id + "/", requestOptions)
+        fetch(endpoints.playlistById(selectedPlayList.id), requestOptions)
             .then(response => response.text())
             .then(result => {
                 showToast("Playlist deleted")

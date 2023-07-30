@@ -11,7 +11,7 @@ import MuiAlert from "@mui/material/Alert";
 import { ThemeProvider } from "@mui/material/styles";
 import darkTheme from "./theme";
 import PlaylistDetail from "./features/Playlist/PlaylistTrack"
-
+import {endpoints} from "./services/apiConfig";
 
 function App() {
   const [tracks, setTracks] = useState([]);
@@ -43,7 +43,7 @@ function App() {
   };
 
   const fetchPlaylist = (sort="name") => {
-    fetch("http://0.0.0.0:8000/playlists/?sort="+sort, { mode: "cors" })
+    fetch(endpoints.playlists(sort), { mode: "cors" })
     .then((res) => res.json())
     .then((data) => {
       setPlayLists(data)
@@ -56,7 +56,7 @@ function App() {
 
 
   const fetchTracks = () => {
-    fetch("http://0.0.0.0:8000/tracks/", { mode: "cors" })
+    fetch(endpoints.tracks, { mode: "cors" })
       .then((res) => res.json())
       .then((data) => {
         setTracks(data)
