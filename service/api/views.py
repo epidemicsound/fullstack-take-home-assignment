@@ -23,3 +23,4 @@ class PlaylistViewSet(viewsets.ModelViewSet):
         playlist.tracks.set(tracks)
         serializer = serializers.PlaylistSerializer(models.Playlist.objects.all(), many=True)
         return Response(serializer.data)
+    
