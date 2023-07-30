@@ -7,8 +7,16 @@ import TrackRow from "../components/TrackRow";
 import AudioPlayer from "../components/AudioPlayer";
 
 
-function removeFromPlaylist(track, playlist) {
-    console.log("Trigger remove for ", track.title, playlist.id)
+function removeFromPlaylist(rtrack, playlist) {
+    console.log("Trigger remove for ", rtrack, playlist)
+    playlist.tracks.pop(rtrack)
+    console.log(playlist)
+    fetch("http://0.0.0.0:8000/playlists/" + playlist.id + "/", {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }, mode: "cors", method: "PUT", body: JSON.stringify({ "id": playlist.id, "name": playlist.name, tracks: playlist.tracks })
+    })
 }
 
 function PlaylistDetail() {

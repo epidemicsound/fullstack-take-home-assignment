@@ -24,3 +24,10 @@ class PlaylistViewSet(viewsets.ModelViewSet):
         serializer = serializers.PlaylistSerializer(models.Playlist.objects.all(), many=True)
         return Response(serializer.data)
     
+    def update(self, request, pk):
+        data = request.data
+        tracks = data.pop("tracks")
+        playlist = models.Playlist.objects.get(id=data["id"])
+        set_tracks = [models.Track.objects.get(id=track["id"]) for track in tracks]
+        playlist.tracks.set(set_tracks)
+        return Response(serializers.PlaylistSerializer(playlist).data)
