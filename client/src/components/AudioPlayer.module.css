@@ -41,3 +41,27 @@
 .slider {
   width: 100%;
 }
+
+
+
+@media (max-width: 767px) {
+
+  .audioPlayer {
+       flex-wrap: wrap;
+  }
+
+  .trackInfo {
+    width: 12.5rem;
+  }
+  
+  .trackTitle {
+    font-weight: 400;
+  }
+  
+  .togglePlaybackButton {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+
+}

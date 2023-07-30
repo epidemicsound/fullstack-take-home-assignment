@@ -1,0 +1,41 @@
+.playlistRow {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  border-bottom: 1px solid #333;
+  position: relative;
+  cursor:pointer
+}
+
+.playlistRow:last-child {
+  border-bottom: none;
+}
+
+.playlistTitle {
+  font-weight: 600;
+  margin-left: 10px;
+}
+.playlistSubTitle{
+  font-weight: 300;
+  margin-left: 10px;
+  font-size: 15px;
+  color: rgba(194, 184, 184, 0.801);
+}
+
+.deleteIconContainer {
+  margin-left: auto;
+}
+
+@media (max-width: 767px) {
+  .playlistTitle {
+    font-weight: 400;
+    font-size: 80%;
+    width: 50vw;
+  }
+
+  .playlistArtist {
+    color: #767676;
+    font-size: 70%;
+  }
+
+}

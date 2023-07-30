@@ -1,5 +1,13 @@
 from django.conf import settings
 from django.db import models
+import uuid
+    
+
+
+
+def generate_custom_id():
+    unique_id = uuid.uuid4().hex
+    return f"{unique_id[:10]}"
 
 
 class Artist(models.Model):
@@ -48,3 +56,13 @@ class Track(models.Model):
     @property
     def spotify(self):
         return "{}{}/{}".format(settings.DSP_BASE, self.id, "spotify")
+
+
+class Playlist(models.Model):
+    id = models.CharField(primary_key=True, max_length=10,default=generate_custom_id)
+    name = models.CharField(max_length=200, null=False)
+    tracks = models.ManyToManyField(Track, related_name="playlists")
+    created_at = models.DateTimeField(auto_now_add=True)  
+
+    def __str__(self):
+        return f"{self.name}"   

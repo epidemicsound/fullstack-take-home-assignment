@@ -1,0 +1,688 @@
+[
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "api.models",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "api.models",
+        "description": "api.models",
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "django.utils.timezone",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.utils.timezone",
+        "description": "django.utils.timezone",
+        "detail": "django.utils.timezone",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uuid",
+        "description": "uuid",
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "routers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "permissions",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "viewsets",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "include",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "get_wsgi_application",
+        "importPath": "django.core.wsgi",
+        "description": "django.core.wsgi",
+        "isExtraImport": true,
+        "detail": "django.core.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "api.migrations.0001_initial",
+        "description": "api.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Artist',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('name', models.CharField(max_length=100)),",
+        "detail": "api.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "api.migrations.0002_fetch_data",
+        "description": "api.migrations.0002_fetch_data",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [(\"api\", \"0001_initial\")]\n    operations = [\n        migrations.RunPython(fill_track_data),\n    ]",
+        "detail": "api.migrations.0002_fetch_data",
+        "documentation": {}
+    },
+    {
+        "label": "fill_track_data",
+        "kind": 2,
+        "importPath": "api.migrations.0002_fetch_data",
+        "description": "api.migrations.0002_fetch_data",
+        "peekOfCode": "def fill_track_data(apps, schema_editor):\n    r = requests.get(f\"{settings.ASSETS_BASE}tracks.json\")\n    tracks = r.json()\n    Track = apps.get_model(\"api\", \"Track\")\n    for track_data in tracks:\n        track = Track.objects.create(\n            id=track_data[\"id\"],\n            title=track_data[\"title\"],\n            length=track_data[\"length\"],\n            bpm=track_data[\"bpm\"],",
+        "detail": "api.migrations.0002_fetch_data",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "api.migrations.0003_playlist",
+        "description": "api.migrations.0003_playlist",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('api', '0002_fetch_data'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Playlist',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('name', models.CharField(max_length=200)),",
+        "detail": "api.migrations.0003_playlist",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "api.migrations.0004_alter_playlist_id",
+        "description": "api.migrations.0004_alter_playlist_id",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('api', '0003_playlist'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='playlist',\n            name='id',\n            field=models.CharField(max_length=10, primary_key=True, serialize=False),\n        ),",
+        "detail": "api.migrations.0004_alter_playlist_id",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "api.migrations.0005_auto_20230727_2100",
+        "description": "api.migrations.0005_auto_20230727_2100",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('api', '0004_alter_playlist_id'),\n    ]\n    operations = [\n    ]",
+        "detail": "api.migrations.0005_auto_20230727_2100",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "api.migrations.0006_playlist_created_at_alter_playlist_id",
+        "description": "api.migrations.0006_playlist_created_at_alter_playlist_id",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('api', '0005_auto_20230727_2100'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='playlist',\n            name='created_at',\n            field=models.DateTimeField(auto_now_add=True, default=django.utils.timezone.now),\n            preserve_default=False,",
+        "detail": "api.migrations.0006_playlist_created_at_alter_playlist_id",
+        "documentation": {}
+    },
+    {
+        "label": "ApiConfig",
+        "kind": 6,
+        "importPath": "api.apps",
+        "description": "api.apps",
+        "peekOfCode": "class ApiConfig(AppConfig):\n    default_auto_field = \"django.db.models.BigAutoField\"\n    name = \"api\"",
+        "detail": "api.apps",
+        "documentation": {}
+    },
+    {
+        "label": "Artist",
+        "kind": 6,
+        "importPath": "api.models",
+        "description": "api.models",
+        "peekOfCode": "class Artist(models.Model):\n    name = models.CharField(max_length=100, null=False)\n    def __str__(self):\n        return f\"{self.name}\"\nclass Genre(models.Model):\n    name = models.CharField(max_length=100, null=False)\n    def __str__(self):\n        return f\"{self.name}\"\nclass Mood(models.Model):\n    name = models.CharField(max_length=100, null=False)",
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Genre",
+        "kind": 6,
+        "importPath": "api.models",
+        "description": "api.models",
+        "peekOfCode": "class Genre(models.Model):\n    name = models.CharField(max_length=100, null=False)\n    def __str__(self):\n        return f\"{self.name}\"\nclass Mood(models.Model):\n    name = models.CharField(max_length=100, null=False)\n    def __str__(self):\n        return f\"{self.name}\"\nclass Track(models.Model):\n    id = models.CharField(primary_key=True, max_length=10)",
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Mood",
+        "kind": 6,
+        "importPath": "api.models",
+        "description": "api.models",
+        "peekOfCode": "class Mood(models.Model):\n    name = models.CharField(max_length=100, null=False)\n    def __str__(self):\n        return f\"{self.name}\"\nclass Track(models.Model):\n    id = models.CharField(primary_key=True, max_length=10)\n    title = models.CharField(max_length=200, null=False)\n    genres = models.ManyToManyField(Genre, related_name=\"genre\")\n    moods = models.ManyToManyField(Mood, related_name=\"mood\")\n    main_artists = models.ManyToManyField(Artist, related_name=\"main_artist\")",
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Track",
+        "kind": 6,
+        "importPath": "api.models",
+        "description": "api.models",
+        "peekOfCode": "class Track(models.Model):\n    id = models.CharField(primary_key=True, max_length=10)\n    title = models.CharField(max_length=200, null=False)\n    genres = models.ManyToManyField(Genre, related_name=\"genre\")\n    moods = models.ManyToManyField(Mood, related_name=\"mood\")\n    main_artists = models.ManyToManyField(Artist, related_name=\"main_artist\")\n    featured_artists = models.ManyToManyField(Artist, related_name=\"featured_artist\")\n    length = models.IntegerField(default=0)\n    bpm = models.IntegerField(default=0)\n    @property",
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "Playlist",
+        "kind": 6,
+        "importPath": "api.models",
+        "description": "api.models",
+        "peekOfCode": "class Playlist(models.Model):\n    id = models.CharField(primary_key=True, max_length=10,default=generate_custom_id)\n    name = models.CharField(max_length=200, null=False)\n    tracks = models.ManyToManyField(Track, related_name=\"playlists\")\n    created_at = models.DateTimeField(auto_now_add=True)  \n    def __str__(self):\n        return f\"{self.name}\"",
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "generate_custom_id",
+        "kind": 2,
+        "importPath": "api.models",
+        "description": "api.models",
+        "peekOfCode": "def generate_custom_id():\n    unique_id = uuid.uuid4().hex\n    return f\"{unique_id[:10]}\"\nclass Artist(models.Model):\n    name = models.CharField(max_length=100, null=False)\n    def __str__(self):\n        return f\"{self.name}\"\nclass Genre(models.Model):\n    name = models.CharField(max_length=100, null=False)\n    def __str__(self):",
+        "detail": "api.models",
+        "documentation": {}
+    },
+    {
+        "label": "TrackSerializer",
+        "kind": 6,
+        "importPath": "api.serializers",
+        "description": "api.serializers",
+        "peekOfCode": "class TrackSerializer(serializers.ModelSerializer):\n    genres = serializers.StringRelatedField(many=True)\n    moods = serializers.StringRelatedField(many=True)\n    main_artists = serializers.StringRelatedField(many=True)\n    featured_artists = serializers.StringRelatedField(many=True)\n    class Meta:\n        model = models.Track\n        fields = [\n            \"id\",\n            \"title\",",
+        "detail": "api.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "UpdatePlaylistSerializer",
+        "kind": 6,
+        "importPath": "api.serializers",
+        "description": "api.serializers",
+        "peekOfCode": "class UpdatePlaylistSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = models.Playlist\n        fields = ['name', 'created_at']\nclass GetmanyPlaylistNameSerializer(serializers.ModelSerializer):\n    tracks = serializers.SerializerMethodField()\n    def get_tracks(self, playlist):\n        return list(playlist.tracks.values_list('id', flat=True))\n    class Meta:\n        model = models.Playlist",
+        "detail": "api.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "GetmanyPlaylistNameSerializer",
+        "kind": 6,
+        "importPath": "api.serializers",
+        "description": "api.serializers",
+        "peekOfCode": "class GetmanyPlaylistNameSerializer(serializers.ModelSerializer):\n    tracks = serializers.SerializerMethodField()\n    def get_tracks(self, playlist):\n        return list(playlist.tracks.values_list('id', flat=True))\n    class Meta:\n        model = models.Playlist\n        fields = ['id', 'name', 'tracks', 'created_at']\nclass CreatePlaylistSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = models.Playlist",
+        "detail": "api.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "CreatePlaylistSerializer",
+        "kind": 6,
+        "importPath": "api.serializers",
+        "description": "api.serializers",
+        "peekOfCode": "class CreatePlaylistSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = models.Playlist\n        fields = '__all__'\nclass GetOnePlaylistSerializer(serializers.ModelSerializer):\n    tracks = TrackSerializer(many=True, read_only=True)\n    class Meta:\n        model = models.Playlist\n        fields = '__all__'",
+        "detail": "api.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "GetOnePlaylistSerializer",
+        "kind": 6,
+        "importPath": "api.serializers",
+        "description": "api.serializers",
+        "peekOfCode": "class GetOnePlaylistSerializer(serializers.ModelSerializer):\n    tracks = TrackSerializer(many=True, read_only=True)\n    class Meta:\n        model = models.Playlist\n        fields = '__all__'",
+        "detail": "api.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_DIR",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = \"django-insecure-1!ngm6x+5nvlq)=8tnrkfrcclzrn@+-ey*fbzj84u0p^u*)61o\"\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = [\"*\"]\n# Application definition\nINSTALLED_APPS = [",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SECRET_KEY",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "SECRET_KEY = \"django-insecure-1!ngm6x+5nvlq)=8tnrkfrcclzrn@+-ey*fbzj84u0p^u*)61o\"\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = [\"*\"]\n# Application definition\nINSTALLED_APPS = [\n    \"api\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DEBUG",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = [\"*\"]\n# Application definition\nINSTALLED_APPS = [\n    \"api\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ALLOWED_HOSTS",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "ALLOWED_HOSTS = [\"*\"]\n# Application definition\nINSTALLED_APPS = [\n    \"api\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "INSTALLED_APPS",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "INSTALLED_APPS = [\n    \"api\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",\n    \"corsheaders\",\n    \"rest_framework\",",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MIDDLEWARE",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "MIDDLEWARE = [\n    \"corsheaders.middleware.CorsMiddleware\",\n    \"django.middleware.common.CommonMiddleware\",\n    \"django.middleware.security.SecurityMiddleware\",\n    \"django.contrib.sessions.middleware.SessionMiddleware\",\n    \"django.middleware.csrf.CsrfViewMiddleware\",\n    \"django.contrib.auth.middleware.AuthenticationMiddleware\",\n    \"django.contrib.messages.middleware.MessageMiddleware\",\n    \"django.middleware.clickjacking.XFrameOptionsMiddleware\",\n]",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ROOT_URLCONF",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "ROOT_URLCONF = \"api.urls\"\nCORS_ALLOW_ALL_ORIGINS = True\nCORS_ALLOW_CREDENTIALS = True\nTEMPLATES = [\n    {\n        \"BACKEND\": \"django.template.backends.django.DjangoTemplates\",\n        \"DIRS\": [],\n        \"APP_DIRS\": True,\n        \"OPTIONS\": {\n            \"context_processors\": [",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CORS_ALLOW_ALL_ORIGINS",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "CORS_ALLOW_ALL_ORIGINS = True\nCORS_ALLOW_CREDENTIALS = True\nTEMPLATES = [\n    {\n        \"BACKEND\": \"django.template.backends.django.DjangoTemplates\",\n        \"DIRS\": [],\n        \"APP_DIRS\": True,\n        \"OPTIONS\": {\n            \"context_processors\": [\n                \"django.template.context_processors.debug\",",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CORS_ALLOW_CREDENTIALS",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "CORS_ALLOW_CREDENTIALS = True\nTEMPLATES = [\n    {\n        \"BACKEND\": \"django.template.backends.django.DjangoTemplates\",\n        \"DIRS\": [],\n        \"APP_DIRS\": True,\n        \"OPTIONS\": {\n            \"context_processors\": [\n                \"django.template.context_processors.debug\",\n                \"django.template.context_processors.request\",",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "TEMPLATES",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "TEMPLATES = [\n    {\n        \"BACKEND\": \"django.template.backends.django.DjangoTemplates\",\n        \"DIRS\": [],\n        \"APP_DIRS\": True,\n        \"OPTIONS\": {\n            \"context_processors\": [\n                \"django.template.context_processors.debug\",\n                \"django.template.context_processors.request\",\n                \"django.contrib.auth.context_processors.auth\",",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASES",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "DATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"database\",\n        \"USER\": \"user\",\n        \"PASSWORD\": \"password\",\n        \"HOST\": \"db\",\n        \"PORT\": 5432,\n    }\n}",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AUTH_PASSWORD_VALIDATORS",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "AUTH_PASSWORD_VALIDATORS = [\n    {\n        \"NAME\": \"django.contrib.auth.password_validation.UserAttributeSimilarityValidator\",\n    },\n    {\n        \"NAME\": \"django.contrib.auth.password_validation.MinimumLengthValidator\",\n    },\n    {\n        \"NAME\": \"django.contrib.auth.password_validation.CommonPasswordValidator\",\n    },",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "LANGUAGE_CODE",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "LANGUAGE_CODE = \"en-us\"\nTIME_ZONE = \"UTC\"\nUSE_I18N = True\nUSE_L10N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.2/howto/static-files/\nSTATIC_URL = \"/static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "TIME_ZONE",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "TIME_ZONE = \"UTC\"\nUSE_I18N = True\nUSE_L10N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.2/howto/static-files/\nSTATIC_URL = \"/static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_I18N",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "USE_I18N = True\nUSE_L10N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.2/howto/static-files/\nSTATIC_URL = \"/static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nASSETS_BASE = \"https://storage.googleapis.com/tech-coding-interview-assets/\"",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_L10N",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "USE_L10N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.2/howto/static-files/\nSTATIC_URL = \"/static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nASSETS_BASE = \"https://storage.googleapis.com/tech-coding-interview-assets/\"\nDSP_BASE = \"http://link.epidemicsound.com/\"",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_TZ",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.2/howto/static-files/\nSTATIC_URL = \"/static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nASSETS_BASE = \"https://storage.googleapis.com/tech-coding-interview-assets/\"\nDSP_BASE = \"http://link.epidemicsound.com/\"",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATIC_URL",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "STATIC_URL = \"/static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nASSETS_BASE = \"https://storage.googleapis.com/tech-coding-interview-assets/\"\nDSP_BASE = \"http://link.epidemicsound.com/\"",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_AUTO_FIELD",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nASSETS_BASE = \"https://storage.googleapis.com/tech-coding-interview-assets/\"\nDSP_BASE = \"http://link.epidemicsound.com/\"",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ASSETS_BASE",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "ASSETS_BASE = \"https://storage.googleapis.com/tech-coding-interview-assets/\"\nDSP_BASE = \"http://link.epidemicsound.com/\"",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DSP_BASE",
+        "kind": 5,
+        "importPath": "api.settings",
+        "description": "api.settings",
+        "peekOfCode": "DSP_BASE = \"http://link.epidemicsound.com/\"",
+        "detail": "api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "api.urls",
+        "description": "api.urls",
+        "peekOfCode": "router = routers.DefaultRouter()\nrouter.register(r\"tracks\", views.TrackViewSet)\nrouter.register(r\"playlists\", views.PlaylistViewSet)\nurlpatterns = [\n    path(\"\", include(router.urls)),\n    # API for adding a track to a playlist\n    path('playlists/<str:playlist_id>/add_track/<str:track_id>/', views.add_track_to_playlist, name='add-track-to-playlist'),\n    # API for removing a track from a playlist\n    path('playlists/<str:playlist_id>/remove_track/<str:track_id>/', views.remove_track_from_playlist, name='remove-track-from-playlist'),\n]",
+        "detail": "api.urls",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "api.urls",
+        "description": "api.urls",
+        "peekOfCode": "urlpatterns = [\n    path(\"\", include(router.urls)),\n    # API for adding a track to a playlist\n    path('playlists/<str:playlist_id>/add_track/<str:track_id>/', views.add_track_to_playlist, name='add-track-to-playlist'),\n    # API for removing a track from a playlist\n    path('playlists/<str:playlist_id>/remove_track/<str:track_id>/', views.remove_track_from_playlist, name='remove-track-from-playlist'),\n]",
+        "detail": "api.urls",
+        "documentation": {}
+    },
+    {
+        "label": "TrackViewSet",
+        "kind": 6,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "class TrackViewSet(viewsets.ModelViewSet):\n    queryset = models.Track.objects.all()\n    serializer_class = serializers.TrackSerializer\n    permission_classes = [permissions.IsAuthenticatedOrReadOnly]\nclass PlaylistViewSet(viewsets.ModelViewSet):\n    queryset = models.Playlist.objects.all()\n    def get_serializer_class(self):\n        if self.action == 'list':\n            return serializers.GetmanyPlaylistNameSerializer\n        elif self.action == 'create':",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "PlaylistViewSet",
+        "kind": 6,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "class PlaylistViewSet(viewsets.ModelViewSet):\n    queryset = models.Playlist.objects.all()\n    def get_serializer_class(self):\n        if self.action == 'list':\n            return serializers.GetmanyPlaylistNameSerializer\n        elif self.action == 'create':\n            return serializers.CreatePlaylistSerializer\n        elif self.action == 'retrieve':\n            return serializers.GetOnePlaylistSerializer\n        elif self.action == 'update':",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "add_track_to_playlist",
+        "kind": 2,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "def add_track_to_playlist(request, playlist_id, track_id):\n    try:\n        playlist = models.Playlist.objects.get(pk=playlist_id)\n        track = models.Track.objects.get(pk=track_id)\n    except models.Playlist.DoesNotExist:\n        return Response({\"error\": \"Playlist not found.\"}, status=status.HTTP_404_NOT_FOUND)\n    except models.Track.DoesNotExist:\n        return Response({\"error\": \"Track not found.\"}, status=status.HTTP_404_NOT_FOUND)\n    playlist.tracks.add(track)\n    serializer = serializers.CreatePlaylistSerializer(playlist)",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "remove_track_from_playlist",
+        "kind": 2,
+        "importPath": "api.views",
+        "description": "api.views",
+        "peekOfCode": "def remove_track_from_playlist(request, playlist_id, track_id):\n    try:\n        playlist = models.Playlist.objects.get(pk=playlist_id)\n        track = models.Track.objects.get(pk=track_id)\n    except models.Playlist.DoesNotExist:\n        return Response({\"error\": \"Playlist not found.\"}, status=status.HTTP_404_NOT_FOUND)\n    except models.Track.DoesNotExist:\n        return Response({\"error\": \"Track not found.\"}, status=status.HTTP_404_NOT_FOUND)\n    playlist.tracks.remove(track)\n    serializer = serializers.CreatePlaylistSerializer(playlist)",
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "application",
+        "kind": 5,
+        "importPath": "api.wsgi",
+        "description": "api.wsgi",
+        "peekOfCode": "application = get_wsgi_application()",
+        "detail": "api.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "manage",
+        "description": "manage",
+        "peekOfCode": "def main():\n    \"\"\"Run administrative tasks.\"\"\"\n    os.environ.setdefault(\"DJANGO_SETTINGS_MODULE\", \"api.settings\")\n    try:\n        from django.core.management import execute_from_command_line\n    except ImportError as exc:\n        raise ImportError(\n            \"Couldn't import Django. Are you sure it's installed and \"\n            \"available on your PYTHONPATH environment variable? Did you \"\n            \"forget to activate a virtual environment?\"",
+        "detail": "manage",
+        "documentation": {}
+    }
+]
