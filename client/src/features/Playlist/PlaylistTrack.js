@@ -46,13 +46,13 @@ function PlaylistDetail({ handlePlay, fetchPlaylist, showToast }) {
 
   }
   useEffect(() => {
-    // Fetch playlist details using the API endpoint
     fetchPlalistDetails()
   }, [id]);
-  
+
   if (!playlist) {
     return <p>Loading...</p>;
   }
+
 
   return (
     <div>
