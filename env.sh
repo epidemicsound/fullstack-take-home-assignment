@@ -1,0 +1,1 @@
+export $(xargs < .env)

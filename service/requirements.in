@@ -4,3 +4,4 @@ django-cors-headers
 requests
 psycopg2-binary>=2.9.5
 pip-tools
+python-dotenv

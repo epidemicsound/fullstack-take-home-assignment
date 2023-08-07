@@ -30,3 +30,50 @@
   color: #fff;
   border-bottom: 2px solid #009de0;
 }
+
+.activeTab {
+  color: #fff;
+  border-bottom: 2px solid #009de0;
+}
+
+
+.createPlaylistModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #333;
+  border-radius: 4px;
+  padding: 1rem;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.createPlaylistOverlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999; 
+}
+
+.trackImage{
+  width: 40px;
+  height: 40px;
+  object-fit: scale-down;
+}
+
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  backdrop-filter: blur(4px); /* Apply the blur effect */
+}
+
+@media (max-width: 767px) {
+  .app {
+    padding: 1rem;
+  }
+}

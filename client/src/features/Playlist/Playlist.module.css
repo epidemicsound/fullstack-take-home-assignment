@@ -1,0 +1,53 @@
+/* TrackList.module.css */
+
+/* CSS variables */
+:root {
+  --playlist-title-font-weight: 600;
+  --playlist-subtitle-font-weight: 300;
+  --playlist-subtitle-font-size: 15px;
+  --playlist-subtitle-color: rgba(194, 184, 184, 0.801);
+}
+
+/* Playlist row styles */
+.playlistRow {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  border-bottom: 1px solid #333;
+  position: relative;
+  cursor: pointer;
+}
+
+.playlistRow:last-child {
+  border-bottom: none;
+}
+
+.playlistTitle {
+  font-weight: var(--playlist-title-font-weight);
+  margin-left: 10px;
+}
+
+.playlistSubTitle {
+  font-weight: var(--playlist-subtitle-font-weight);
+  margin-left: 10px;
+  font-size: var(--playlist-subtitle-font-size);
+  color: var(--playlist-subtitle-color);
+}
+
+.deleteIconContainer {
+  margin-left: auto;
+}
+
+/* Media query for small screens */
+@media (max-width: 767px) {
+  .playlistTitle {
+    font-weight: 400;
+    font-size: 80%;
+    width: 50vw;
+  }
+
+  .playlistSubTitle {
+    color: #767676;
+    font-size: 70%;
+  }
+}

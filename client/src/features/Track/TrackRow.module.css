@@ -1,0 +1,87 @@
+/* TrackRow.module.css */
+
+/* CSS variables */
+:root {
+  --trackPlay-size: 3rem;
+  --trackPlay-size-mobile: 2rem;
+  --trackTitle-font-weight: 600;
+  --trackTitle-font-weight-mobile: 400;
+  --trackTitle-font-size-mobile: 80%;
+  --trackTitle-width-mobile: 50vw;
+  --trackArtist-color: #767676;
+  --trackArtist-font-size-mobile: 70%;
+  --listView-max-height: 200px;
+}
+
+/* TrackRow styles */
+.trackRow {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  border-bottom: 1px solid #333;
+  position: relative;
+}
+
+.trackRow:last-child {
+  border-bottom: none;
+}
+
+.trackPlay {
+  width: var(--trackPlay-size);
+  height: var(--trackPlay-size);
+  border-radius: 50%;
+  background: #333;
+  box-shadow: 0;
+  border: 0;
+  margin-right: 1rem;
+  padding: 0;
+}
+
+.trackTitle {
+  font-weight: var(--trackTitle-font-weight);
+}
+
+.trackArtist {
+  color: var(--trackArtist-color);
+}
+
+.addIcon,
+.deleteIcon {
+  background: transparent;
+  box-shadow: 0;
+  border: 0;
+  margin: 2rem 1rem;
+  padding: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.ListView200 {
+  max-height: var(--listView-max-height);
+  overflow-y: auto;
+}
+
+/* Media query for small screens */
+@media (max-width: 767px) {
+  .trackPlay {
+    width: var(--trackPlay-size-mobile);
+    height: var(--trackPlay-size-mobile);
+    padding-top: 5px;
+  }
+
+  .trackTitle {
+    font-weight: var(--trackTitle-font-weight-mobile);
+    font-size: var(--trackTitle-font-size-mobile);
+    width: var(--trackTitle-width-mobile);
+  }
+
+  .trackArtist {
+    font-size: var(--trackArtist-font-size-mobile);
+  }
+
+  .addIcon {
+    margin: 2rem 0rem;
+  }
+}

@@ -1,4 +1,8 @@
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -8,10 +12,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-1!ngm6x+5nvlq)=8tnrkfrcclzrn@+-ey*fbzj84u0p^u*)61o"
+SECRET_KEY = "django-jhgasdhuy23t4-1!ngm6x+5nvlq)=8tnrkfrcclzrn@+-ey*fbzj84u0p^u*)61o"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("APP_DEBUG", False)
 
 ALLOWED_HOSTS = ["*"]
 
@@ -68,14 +72,13 @@ TEMPLATES = [
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "database",
-        "USER": "user",
-        "PASSWORD": "password",
-        "HOST": "db",
-        "PORT": 5432,
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "HOST": os.getenv("DB_HOST"),
+        "PORT": os.getenv("DB_PORT"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -122,3 +125,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 ASSETS_BASE = "https://storage.googleapis.com/tech-coding-interview-assets/"
 DSP_BASE = "http://link.epidemicsound.com/"
+
