@@ -27,3 +27,61 @@
 .trackArtist {
   color: #767676;
 }
+
+.trackHover:hover {
+  background-color: #ffffff21;
+}
+
+.trackHover .playbutton button {
+  display: none;
+  padding: 0;
+  background: none;
+  line-height: 0;
+}
+
+.trackHover:hover .playbutton button {
+  display: inline-block;
+}
+
+.trackHover:hover .playbutton .coverArt {
+  display: none;
+}
+
+.mediaBox div {
+  overflow: hidden;
+  position: relative;
+  padding-top: 42%;
+}
+.mediaBox img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.playlistCardMedia {
+  position: relative;
+  padding-top: 80%;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.playlistCardMedia button {
+  border-radius: 0;
+}
+
+.playlistCardMedia .cardMediaBox {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+}

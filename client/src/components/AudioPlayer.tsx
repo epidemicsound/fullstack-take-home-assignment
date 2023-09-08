@@ -1,7 +1,12 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, FC } from "react";
 import styles from "./AudioPlayer.module.css";
+import { Track } from "~/App";
 
-function AudioPlayer({ track }) {
+interface Props {
+  track: Track;
+}
+
+export const AudioPlayer: FC<Props> = ({ track }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const audioRef = useRef(null);
@@ -52,42 +57,40 @@ function AudioPlayer({ track }) {
         >
           {isPlaying ? (
             <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+              width='24'
+              height='24'
+              viewBox='0 0 24 24'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
             >
               <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M10 5H7V19H10V5ZM17 5H14V19H17V5Z"
-                fill="#000"
+                fillRule='evenodd'
+                clipRule='evenodd'
+                d='M10 5H7V19H10V5ZM17 5H14V19H17V5Z'
+                fill='#000'
               />
             </svg>
           ) : (
             <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+              width='24'
+              height='24'
+              viewBox='0 0 24 24'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
             >
-              <path d="M20 12L8 5V19L20 12Z" fill="#000" />
+              <path d='M20 12L8 5V19L20 12Z' fill='#000' />
             </svg>
           )}
         </button>
         <div className={styles.trackInfo}>
           <div className={styles.trackTitle}>{track.title}</div>
-          <div className={styles.trackArtist}>
-            {track.main_artists.join(", ")}
-          </div>
+          <div className={styles.trackArtist}>{track.artists}</div>
         </div>
         <div className={styles.sliderContainer}>
           <input
-            type="range"
-            min="1"
-            max="1000"
+            type='range'
+            min='1'
+            max='1000'
             value={progress * 1000}
             className={styles.slider}
             onChange={handleSliderChange}
@@ -96,6 +99,6 @@ function AudioPlayer({ track }) {
       </div>
     </>
   );
-}
+};
 
 export default AudioPlayer;

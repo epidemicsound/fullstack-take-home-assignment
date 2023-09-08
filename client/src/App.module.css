@@ -30,3 +30,18 @@
   color: #fff;
   border-bottom: 2px solid #009de0;
 }
+
+.navtabs {
+  margin: 2rem 0;
+  padding: 0;
+}
+
+.navtabs button {
+  margin-right: 2rem;
+  color: #767676;
+  text-decoration: none;
+  font-size: 1.25rem;
+  padding: 0.5rem 0;
+  text-transform: none;
+  min-width: auto;
+}
