@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./PlaylistRow.module.css";
 
-function PlaylistRow({ playlist, handleOpenPlaylist }) {
-  const handleDeletePlaylist = () => null;
+function PlaylistRow({ playlist, onDelete }) {
+  const handleDeletePlaylist = () => onDelete(playlist.id);
   return (
     <div className={styles.playlistRow}>
       <div className={styles.playlistTitle}>{playlist.title}</div>

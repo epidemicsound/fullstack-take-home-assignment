@@ -21,6 +21,17 @@ function PlaylistsTab() {
     }
   };
 
+  const handleDeletePlaylist = (id) => {
+    fetch(`http://0.0.0.0:8000/playlists/${id}/`, {
+      mode: "cors",
+      method: "DELETE",
+    }).then(() =>
+      setPlaylists((prevState) =>
+        prevState.filter((playlist) => playlist.id !== id),
+      ),
+    );
+  };
+
   return (
     <div>
       <button className={styles.createButton} onClick={handleCreatePlaylist}>
@@ -30,7 +41,11 @@ function PlaylistsTab() {
         <CreatePlaylistForm onFinish={handleCreatePlaylistFinish} />
       )}
       {playlists.map((playlist, idx) => (
-        <PlaylistRow key={idx} playlist={playlist} />
+        <PlaylistRow
+          key={idx}
+          playlist={playlist}
+          onDelete={handleDeletePlaylist}
+        />
       ))}
     </div>
   );
