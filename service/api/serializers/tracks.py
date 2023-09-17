@@ -1,10 +1,6 @@
-from rest_framework import serializers, fields
+from rest_framework import serializers
 
 from api import models
-
-
-class TrackIDSerializer(serializers.ListSerializer):
-    child = fields.CharField()
 
 
 class TrackSerializer(serializers.ModelSerializer):

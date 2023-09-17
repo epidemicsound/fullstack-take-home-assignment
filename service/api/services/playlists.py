@@ -7,9 +7,11 @@ from django.http import Http404
 from api import models
 
 
-def get_playlist_tracks(playlist: models.Playlist) -> List[str]:
-    tracks = playlist.playlisttrack_set.order_by("order").only("track_id")
-    return [track.track_id for track in tracks]
+def get_playlist_tracks(playlist: models.Playlist):
+    tracks = models.Track.objects.filter(playlists__exact=playlist).order_by(
+        "playlisttrack__order"
+    )
+    return tracks
 
 
 def add_track_to_playlist(

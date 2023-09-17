@@ -29,7 +29,7 @@ class PlaylistViewSet(viewsets.ModelViewSet):
     ) -> Response:
         tracks = service.get_playlist_tracks(playlist=self.get_object())
 
-        serializer = serializers.TrackIDSerializer(instance=tracks)
+        serializer = serializers.TrackSerializer(instance=tracks, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     @playlist_tracks.mapping.post
@@ -43,7 +43,7 @@ class PlaylistViewSet(viewsets.ModelViewSet):
             tracks_data=request.data,
         )
 
-        serializer = serializers.TrackIDSerializer(instance=tracks)
+        serializer = serializers.TrackSerializer(instance=tracks, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     @action(methods=["delete"], detail=True, url_path="tracks/(?P<track_pk>[^/.]+)")
