@@ -1,18 +1,28 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import styles from "./TrackRow.module.css";
 import AddButton from "../buttons/AddButton";
 import Button, { BUTTON_TYPES } from "../buttons/Button";
 import PlayButton from "../buttons/PlayButton";
+import { usePlay } from "../../context/PlayContext";
 
 function TrackRow({
   track,
-  handlePlay,
   showAddToPlaylistButton = false,
   showDeleteButton = false,
   onButtonClick,
   playlists,
 }) {
+  const { currentTrack, isPlaying, setCurrentTrack, setIsPlaying } = usePlay();
   const [showPlaylists, setShowPlaylists] = useState(false);
+  const isCurrentPlaying = useMemo(
+    () => currentTrack.id === track.id && isPlaying,
+    [currentTrack, isPlaying],
+  );
+
+  const handlePlayButtonClick = () => {
+    setCurrentTrack(track);
+    setIsPlaying(!isCurrentPlaying);
+  };
 
   const handleAddToPlaylist = (playlistId) => {
     fetch(`http://0.0.0.0:8000/playlists/${playlistId}/tracks/`, {
@@ -28,7 +38,10 @@ function TrackRow({
   return (
     <>
       <div className={styles.trackRow}>
-        <PlayButton onClick={() => handlePlay(track)} />
+        <PlayButton
+          isPlaying={isCurrentPlaying}
+          onClick={handlePlayButtonClick}
+        />
         <div className={styles.trackInfo}>
           <div className={styles.trackTitle}>{track.title}</div>
           <div className={styles.trackArtist}>

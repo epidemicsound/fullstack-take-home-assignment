@@ -1,8 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
 import styles from "./AudioPlayer.module.css";
+import { usePlay } from "../context/PlayContext";
+import PlayButton from "./buttons/PlayButton";
 
 function AudioPlayer({ track }) {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const { isPlaying, setIsPlaying } = usePlay();
   const [progress, setProgress] = useState(0);
   const audioRef = useRef(null);
 
@@ -15,7 +17,7 @@ function AudioPlayer({ track }) {
   };
 
   const handleTimeUpdate = (e) => {
-    setProgress(e.target.currentTime / e.target.duration);
+    setProgress(e.target.currentTime / e.target.duration || 0);
   };
 
   const handleSliderChange = (e) => {
@@ -42,41 +44,22 @@ function AudioPlayer({ track }) {
     audioRef.current.currentTime = 0;
   }, [track]);
 
+  useEffect(() => {
+    if (isPlaying !== audioRef.current.paused) {
+      return;
+    }
+    if (!isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+  }, [isPlaying]);
+
   return (
     <>
       <audio src={track.audio} ref={audioRef} />
       <div className={styles.audioPlayer}>
-        <button
-          className={styles.togglePlaybackButton}
-          onClick={handleTogglePlaybackClick}
-        >
-          {isPlaying ? (
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M10 5H7V19H10V5ZM17 5H14V19H17V5Z"
-                fill="#000"
-              />
-            </svg>
-          ) : (
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M20 12L8 5V19L20 12Z" fill="#000" />
-            </svg>
-          )}
-        </button>
+        <PlayButton isPlaying={isPlaying} onClick={handleTogglePlaybackClick} />
         <div className={styles.trackInfo}>
           <div className={styles.trackTitle}>{track.title}</div>
           <div className={styles.trackArtist}>

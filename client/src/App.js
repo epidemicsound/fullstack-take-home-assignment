@@ -5,6 +5,7 @@ import logo from "./assets/logo.svg";
 import AudioPlayer from "./components/AudioPlayer";
 import TracksTab from "./components/tabs/TracksTab";
 import PlaylistsTab from "./components/tabs/PlaylistsTab";
+import { usePlay } from "./context/PlayContext";
 
 const TABS = {
   tracks: "tracks",
@@ -12,7 +13,7 @@ const TABS = {
 };
 
 function App() {
-  const [currentTrack, setCurrentTrack] = useState();
+  const { currentTrack } = usePlay();
   const [activeTab, setActiveTab] = useState(TABS.tracks);
 
   const Component = useMemo(() => {
