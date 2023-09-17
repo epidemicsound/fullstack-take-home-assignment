@@ -57,12 +57,14 @@ function AudioPlayer({ track }) {
 
   return (
     <>
-      <audio src={track.audio} ref={audioRef} />
+      <audio src={track.audio} ref={audioRef} data-testid="audio-element" />
       <div className={styles.audioPlayer}>
         <PlayButton isPlaying={isPlaying} onClick={handleTogglePlaybackClick} />
         <div className={styles.trackInfo}>
-          <div className={styles.trackTitle}>{track.title}</div>
-          <div className={styles.trackArtist}>
+          <div className={styles.trackTitle} data-testid="track-title">
+            {track.title}
+          </div>
+          <div className={styles.trackArtist} data-testid="track-artist">
             {track.main_artists.join(", ")}
           </div>
         </div>
@@ -74,6 +76,7 @@ function AudioPlayer({ track }) {
             value={progress * 1000}
             className={styles.slider}
             onChange={handleSliderChange}
+            data-testid="slider"
           />
         </div>
       </div>
