@@ -18,13 +18,12 @@ def add_track_to_playlist(
 ) -> List[str]:
     errors = []
 
-    last_track = models.PlaylistTrack.objects.filter(playlist=playlist).latest()
-    last_order = last_track.order
+    last_order = __get_last_order(playlist=playlist)
     for track in tracks_data:
         playlist_track = models.PlaylistTrack(
             track_id=track["track_id"],
             playlist=playlist,
-            order=last_order,
+            order=last_order + 1,
         )
 
         try:
@@ -36,6 +35,17 @@ def add_track_to_playlist(
 
     logging.warning(f"Failed to add these tracks to playlist: [{errors}]")
     return get_playlist_tracks(playlist)
+
+
+def __get_last_order(playlist: models.Playlist) -> int:
+    try:
+        last_track = models.PlaylistTrack.objects.filter(playlist=playlist).latest()
+        last_order = last_track.order
+
+    except models.PlaylistTrack.DoesNotExist:
+        last_order = 0
+
+    return last_order
 
 
 def delete_track_from_playlist(

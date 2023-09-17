@@ -18,5 +18,8 @@ class PlaylistTrack(models.Model):
     order = models.IntegerField()
 
     class Meta:
-        unique_together = ("playlist_id", "track_id")
+        unique_together = [
+            ("playlist_id", "track_id"),
+            ("playlist_id", "order"),
+        ]
         get_latest_by = "order"
