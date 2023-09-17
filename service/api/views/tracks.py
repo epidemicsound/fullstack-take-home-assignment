@@ -1,6 +1,6 @@
 from rest_framework import permissions, viewsets
 
-from . import models, serializers
+from api import models, serializers
 
 
 class TrackViewSet(viewsets.ModelViewSet):
