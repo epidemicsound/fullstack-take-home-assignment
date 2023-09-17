@@ -1,25 +1,31 @@
-from django.db import IntegrityError
-from django.http import Http404
+from typing import Optional
+
 from rest_framework import permissions, viewsets, status
 from rest_framework.decorators import action
+from rest_framework.request import Request
 from rest_framework.response import Response
 
 from api import models, serializers
+from api.services import playlists as service
 
 
 class PlaylistViewSet(viewsets.ModelViewSet):
     queryset = models.Playlist.objects.all()
     serializer_class = serializers.PlaylistSerializer
-    permission_classes = [permissions.AllowAny]  # TODO: update
+    permission_classes = [
+        permissions.AllowAny
+    ]  # TODO: update permissions to authorized user
 
     @action(methods=["get"], detail=True, url_path="tracks")
-    def playlist_tracks(self, request, pk=None):
-        tracks = self.get_object().playlisttrack_set.order_by("order").only("track_id")
-        serializer = serializers.TrackIDSerializer(
-            instance=[track.track_id for track in tracks]
-        )
-        headers = self.get_success_headers(serializer.data)
+    def playlist_tracks(
+        self,
+        request: Request,
+        pk: Optional[str] = None,
+    ) -> Response:
+        tracks = service.get_playlist_tracks(playlist=self.get_object())
 
+        serializer = serializers.TrackIDSerializer(instance=tracks)
+        headers = self.get_success_headers(serializer.data)
         return Response(
             serializer.data,
             status=status.HTTP_200_OK,
@@ -27,30 +33,17 @@ class PlaylistViewSet(viewsets.ModelViewSet):
         )
 
     @playlist_tracks.mapping.post
-    def add_track(self, request, pk=None):
-        playlist = self.get_object()
-        errors = []
-
-        last_track = models.PlaylistTrack.objects.filter(playlist=playlist).latest()
-        last_order = last_track.order
-        for track in request.data:
-            playlist_track = models.PlaylistTrack(
-                track_id=track["track_id"],
-                playlist=playlist,
-                order=last_order,
-            )
-
-            try:
-                playlist_track.save()
-                last_order += 1
-
-            except IntegrityError as e:
-                errors.append(track)
-
-        tracks = playlist.playlisttrack_set.order_by("order").only("track_id")
-        serializer = serializers.TrackIDSerializer(
-            instance=[track.track_id for track in tracks]
+    def add_track(
+        self,
+        request: Request,
+        pk: Optional[str] = None,
+    ) -> Response:
+        tracks = service.add_track_to_playlist(
+            playlist=self.get_object(),
+            tracks_data=request.data,
         )
+
+        serializer = serializers.TrackIDSerializer(instance=tracks)
         headers = self.get_success_headers(serializer.data)
         return Response(
             serializer.data,
@@ -59,12 +52,13 @@ class PlaylistViewSet(viewsets.ModelViewSet):
         )
 
     @action(methods=["delete"], detail=True, url_path="tracks/(?P<track_pk>[^/.]+)")
-    def remove_track(self, request, pk=None, track_pk=None):
-        track = models.PlaylistTrack.objects.filter(playlist_id=pk, track_id=track_pk)
-        if not track:
-            raise Http404("Track not found in playlist")
-
-        track.delete()
+    def delete_track(
+        self,
+        request: Request,
+        pk: Optional[str] = None,
+        track_pk: Optional[str] = None,
+    ) -> Response:
+        service.delete_track_from_playlist(playlist_id=pk, track_id=track_pk)
 
         headers = self.get_success_headers({})
         return Response(
