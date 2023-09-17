@@ -8,7 +8,7 @@ function PlaylistsTab() {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   useEffect(() => {
-    fetch("http://0.0.0.0:8000/playlists/", { mode: "cors" })
+    fetch(`${process.env.REACT_APP_API_HOST}/playlists/`, { mode: "cors" })
       .then((res) => res.json())
       .then((data) => setPlaylists(data));
   }, []);
@@ -22,7 +22,7 @@ function PlaylistsTab() {
   };
 
   const handleDeletePlaylist = (id) => {
-    fetch(`http://0.0.0.0:8000/playlists/${id}/`, {
+    fetch(`${process.env.REACT_APP_API_HOST}/playlists/${id}/`, {
       mode: "cors",
       method: "DELETE",
     }).then(() =>

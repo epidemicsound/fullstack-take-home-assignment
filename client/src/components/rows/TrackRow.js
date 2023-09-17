@@ -25,7 +25,7 @@ function TrackRow({
   };
 
   const handleAddToPlaylist = (playlistId) => {
-    fetch(`http://0.0.0.0:8000/playlists/${playlistId}/tracks/`, {
+    fetch(`${process.env.REACT_APP_API_HOST}/playlists/${playlistId}/tracks/`, {
       mode: "cors",
       method: "POST",
       headers: {

@@ -10,10 +10,13 @@ function PlaylistRow({ playlist, onDelete }) {
   const handleTogglePlaylist = () => setIsPlaylistOpen((prev) => !prev);
 
   const handleDeleteTrack = (trackId) => {
-    fetch(`http://0.0.0.0:8000/playlists/${playlist.id}/tracks/${trackId}/`, {
-      mode: "cors",
-      method: "DELETE",
-    }).then(() =>
+    fetch(
+      `${process.env.REACT_APP_API_HOST}/playlists/${playlist.id}/tracks/${trackId}/`,
+      {
+        mode: "cors",
+        method: "DELETE",
+      },
+    ).then(() =>
       setTracksData((prevState) => ({
         isLoaded: true,
         data: prevState.data.filter((track) => track.id !== trackId),
@@ -23,7 +26,9 @@ function PlaylistRow({ playlist, onDelete }) {
 
   useEffect(() => {
     if (!isPlaylistOpen || tracksData.isLoaded) return;
-    fetch(`http://0.0.0.0:8000/playlists/${playlist.id}/`, { mode: "cors" })
+    fetch(`${process.env.REACT_APP_API_HOST}/playlists/${playlist.id}/`, {
+      mode: "cors",
+    })
       .then((res) => res.json())
       .then((data) => {
         setTracksData({ isLoaded: true, data: data.tracks });

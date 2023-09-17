@@ -13,7 +13,7 @@
   },
   "scripts": {
     "prestart": "npm install",
-    "start": "react-scripts start",
+    "start": "REACT_APP_API_HOST=http://0.0.0.0:8000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

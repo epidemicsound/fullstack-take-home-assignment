@@ -6,7 +6,7 @@ function CreatePlaylistForm({ onFinish }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://0.0.0.0:8000/playlists/", {
+    fetch(`${process.env.REACT_APP_API_HOST}/playlists/`, {
       mode: "cors",
       method: "POST",
       headers: {
