@@ -2,21 +2,18 @@ import React, { useEffect, useMemo, useState } from "react";
 import styles from "./PlaylistRow.module.css";
 import TrackRow from "./TrackRow";
 import Button, { BUTTON_TYPES } from "../buttons/Button";
+import usePlaylists from "../../hooks/usePlaylists";
 
 function PlaylistRow({ playlist, onDelete }) {
   const [isPlaylistOpen, setIsPlaylistOpen] = useState(false);
   const [tracksData, setTracksData] = useState({ isLoaded: false, data: [] });
+  const { deleteTrack, getPlaylistById } = usePlaylists();
+
   const handleDeletePlaylist = () => onDelete(playlist.id);
   const handleTogglePlaylist = () => setIsPlaylistOpen((prev) => !prev);
 
   const handleDeleteTrack = (trackId) => {
-    fetch(
-      `${process.env.REACT_APP_API_HOST}/playlists/${playlist.id}/tracks/${trackId}/`,
-      {
-        mode: "cors",
-        method: "DELETE",
-      },
-    ).then(() =>
+    deleteTrack({ trackId, playlistId: playlist.id }).then(() =>
       setTracksData((prevState) => ({
         isLoaded: true,
         data: prevState.data.filter((track) => track.id !== trackId),
@@ -26,13 +23,9 @@ function PlaylistRow({ playlist, onDelete }) {
 
   useEffect(() => {
     if (!isPlaylistOpen || tracksData.isLoaded) return;
-    fetch(`${process.env.REACT_APP_API_HOST}/playlists/${playlist.id}/`, {
-      mode: "cors",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setTracksData({ isLoaded: true, data: data.tracks });
-      });
+    getPlaylistById(playlist.id).then((data) => {
+      setTracksData({ isLoaded: true, data: data.tracks });
+    });
   }, [isPlaylistOpen, tracksData.isLoaded]);
 
   const playlistContent = useMemo(() => {

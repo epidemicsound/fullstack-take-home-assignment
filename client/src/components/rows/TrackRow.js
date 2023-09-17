@@ -4,6 +4,7 @@ import AddButton from "../buttons/AddButton";
 import Button, { BUTTON_TYPES } from "../buttons/Button";
 import PlayButton from "../buttons/PlayButton";
 import { usePlay } from "../../context/PlayContext";
+import usePlaylists from "../../hooks/usePlaylists";
 
 function TrackRow({
   track,
@@ -13,6 +14,7 @@ function TrackRow({
   playlists,
 }) {
   const { currentTrack, isPlaying, setCurrentTrack, setIsPlaying } = usePlay();
+  const { addTrack } = usePlaylists();
   const [showPlaylists, setShowPlaylists] = useState(false);
   const isCurrentPlaying = useMemo(
     () => currentTrack.id === track.id && isPlaying,
@@ -25,14 +27,7 @@ function TrackRow({
   };
 
   const handleAddToPlaylist = (playlistId) => {
-    fetch(`${process.env.REACT_APP_API_HOST}/playlists/${playlistId}/tracks/`, {
-      mode: "cors",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify([{ track_id: track.id }]),
-    });
+    addTrack({ playlistId, data: [{ track_id: track.id }] });
   };
 
   return (

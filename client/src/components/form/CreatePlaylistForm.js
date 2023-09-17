@@ -1,21 +1,14 @@
 import { useState } from "react";
 import styles from "./CreatePlaylistForm.module.css";
 import Button, { BUTTON_TYPES } from "../buttons/Button";
+import usePlaylists from "../../hooks/usePlaylists";
 function CreatePlaylistForm({ onFinish }) {
   const [title, setTitle] = useState("");
+  const { createPlaylist } = usePlaylists();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`${process.env.REACT_APP_API_HOST}/playlists/`, {
-      mode: "cors",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ title }),
-    })
-      .then((res) => res.json())
-      .then((data) => onFinish(data));
+    createPlaylist({ title }).then((data) => onFinish(data));
   };
 
   const handleCancel = () => onFinish();

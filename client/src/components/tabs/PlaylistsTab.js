@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import PlaylistRow from "../rows/PlaylistRow";
 import CreatePlaylistForm from "../form/CreatePlaylistForm";
 import Button, { BUTTON_TYPES } from "../buttons/Button";
+import usePlaylists from "../../hooks/usePlaylists";
 
 function PlaylistsTab() {
   const [playlists, setPlaylists] = useState([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
 
+  const { getAll, deletePlaylist } = usePlaylists();
+
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_HOST}/playlists/`, { mode: "cors" })
-      .then((res) => res.json())
-      .then((data) => setPlaylists(data));
+    getAll().then((data) => setPlaylists(data));
   }, []);
 
   const handleCreatePlaylist = () => setIsFormOpen(true);
@@ -22,10 +23,7 @@ function PlaylistsTab() {
   };
 
   const handleDeletePlaylist = (id) => {
-    fetch(`${process.env.REACT_APP_API_HOST}/playlists/${id}/`, {
-      mode: "cors",
-      method: "DELETE",
-    }).then(() =>
+    deletePlaylist(id).then(() =>
       setPlaylists((prevState) =>
         prevState.filter((playlist) => playlist.id !== id),
       ),

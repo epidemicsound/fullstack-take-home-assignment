@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import TrackRow from "../rows/TrackRow";
+import usePlaylists from "../../hooks/usePlaylists";
+import useTracks from "../../hooks/useTracks";
 
 function TracksTab() {
   const [tracks, setTracks] = useState([]);
+  const { getAll: getAllPlaylists } = usePlaylists();
+  const { getAll: getAllTracks } = useTracks();
+
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_HOST}/tracks/`, { mode: "cors" })
-      .then((res) => res.json())
-      .then((data) => setTracks(data));
+    getAllTracks().then((data) => setTracks(data));
   }, []);
   const [playlists, setPlaylists] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_HOST}/playlists/`, { mode: "cors" })
-      .then((res) => res.json())
-      .then((data) => setPlaylists(data));
+    getAllPlaylists().then((data) => setPlaylists(data));
   }, []);
   return (
     <div>
