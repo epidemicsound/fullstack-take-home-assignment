@@ -11,7 +11,7 @@ from api.services import playlists as service
 
 class PlaylistViewSet(viewsets.ModelViewSet):
     queryset = models.Playlist.objects.all()
-    serializer_class = serializers.PlaylistSerializer
+    serializer_class = serializers.PlaylistTracksSerializer
     permission_classes = [
         permissions.AllowAny
     ]  # TODO: update permissions to authorized user

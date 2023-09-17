@@ -10,3 +10,11 @@ class PlaylistSerializer(serializers.ModelSerializer):
             "id",
             "title",
         ]
+
+
+class PlaylistTracksSerializer(PlaylistSerializer):
+    tracks = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+
+    class Meta:
+        model = models.Playlist
+        fields = PlaylistSerializer.Meta.fields + ["tracks"]

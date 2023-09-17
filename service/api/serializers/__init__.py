@@ -1,2 +1,2 @@
 from .tracks import TrackSerializer, TrackIDSerializer
-from .playlists import PlaylistSerializer
+from .playlists import PlaylistSerializer, PlaylistTracksSerializer
