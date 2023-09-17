@@ -45,3 +45,12 @@
   cursor: pointer;
   margin-left: auto;
 }
+
+.deleteButton {
+  color: #fff;
+  background-color: rgba(224, 0, 67, 0.5);
+  border: rgba(224, 0, 67, 0.5);
+  padding: 1rem 2rem;
+  margin-left: auto;
+  cursor: pointer;
+}

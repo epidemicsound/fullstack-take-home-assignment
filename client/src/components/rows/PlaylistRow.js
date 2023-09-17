@@ -8,6 +8,18 @@ function PlaylistRow({ playlist, onDelete }) {
   const handleDeletePlaylist = () => onDelete(playlist.id);
   const handleTogglePlaylist = () => setIsPlaylistOpen((prev) => !prev);
 
+  const handleDeleteTrack = (trackId) => {
+    fetch(`http://0.0.0.0:8000/playlists/${playlist.id}/tracks/${trackId}/`, {
+      mode: "cors",
+      method: "DELETE",
+    }).then(() =>
+      setTracksData((prevState) => ({
+        isLoaded: true,
+        data: prevState.data.filter((track) => track.id !== trackId),
+      })),
+    );
+  };
+
   useEffect(() => {
     if (!isPlaylistOpen || tracksData.isLoaded) return;
     fetch(`http://0.0.0.0:8000/playlists/${playlist.id}/`, { mode: "cors" })
@@ -22,7 +34,12 @@ function PlaylistRow({ playlist, onDelete }) {
     if (!tracksData.isLoaded) return <span>Loading...</span>;
     if (!tracksData.data.length) return <span>No tracks yet</span>;
     return tracksData.data.map((track, idx) => (
-      <TrackRow key={idx} track={track} />
+      <TrackRow
+        key={idx}
+        track={track}
+        showDeleteButton
+        onButtonClick={() => handleDeleteTrack(track.id)}
+      />
     ));
   }, [tracksData, isPlaylistOpen]);
 

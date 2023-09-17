@@ -12,7 +12,7 @@ function TracksTab() {
   return (
     <div>
       {tracks.map((track, idx) => (
-        <TrackRow key={idx} track={track} />
+        <TrackRow key={idx} track={track} showAddToPlaylistButton />
       ))}
     </div>
   );
