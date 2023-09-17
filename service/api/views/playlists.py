@@ -25,12 +25,7 @@ class PlaylistViewSet(viewsets.ModelViewSet):
         tracks = service.get_playlist_tracks(playlist=self.get_object())
 
         serializer = serializers.TrackIDSerializer(instance=tracks)
-        headers = self.get_success_headers(serializer.data)
-        return Response(
-            serializer.data,
-            status=status.HTTP_200_OK,
-            headers=headers,
-        )
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     @playlist_tracks.mapping.post
     def add_track(
@@ -44,12 +39,7 @@ class PlaylistViewSet(viewsets.ModelViewSet):
         )
 
         serializer = serializers.TrackIDSerializer(instance=tracks)
-        headers = self.get_success_headers(serializer.data)
-        return Response(
-            serializer.data,
-            status=status.HTTP_200_OK,
-            headers=headers,
-        )
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     @action(methods=["delete"], detail=True, url_path="tracks/(?P<track_pk>[^/.]+)")
     def delete_track(
@@ -60,8 +50,4 @@ class PlaylistViewSet(viewsets.ModelViewSet):
     ) -> Response:
         service.delete_track_from_playlist(playlist_id=pk, track_id=track_pk)
 
-        headers = self.get_success_headers({})
-        return Response(
-            status=status.HTTP_204_NO_CONTENT,
-            headers=headers,
-        )
+        return Response(status=status.HTTP_204_NO_CONTENT)
