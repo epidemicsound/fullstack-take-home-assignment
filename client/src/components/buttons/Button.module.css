@@ -1,0 +1,32 @@
+.baseButton {
+  border: 0;
+  min-height: 2.75rem;
+  min-width: 4.75rem;
+  padding: 0.25rem 1rem;
+  font-size: 1rem;
+  line-height: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #0f0f0f;
+  border-radius: 2px;
+}
+.deleteButton {
+  background-color: #ff561b;
+}
+.deleteButton:hover {
+  background-color: #d34411;
+}
+
+.submitButton {
+  background-color: #ffffff;
+}
+.submitButton:hover {
+  background-color: #eeebeb;
+}
+
+.defaultButton {
+  background-color: rgba(255,255,255,.2);
+}
+.defaultButton:hover {
+  background-color: rgba(255,255,255,.3);
+}

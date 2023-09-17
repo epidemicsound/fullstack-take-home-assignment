@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import styles from "./PlaylistRow.module.css";
 import TrackRow from "./TrackRow";
+import Button, { BUTTON_TYPES } from "../buttons/Button";
 
 function PlaylistRow({ playlist, onDelete }) {
   const [isPlaylistOpen, setIsPlaylistOpen] = useState(false);
@@ -44,15 +45,15 @@ function PlaylistRow({ playlist, onDelete }) {
   }, [tracksData, isPlaylistOpen]);
 
   return (
-    <>
+    <div className={isPlaylistOpen ? styles.playlistRowOpen : ""}>
       <div className={styles.playlistRow} onClick={handleTogglePlaylist}>
         <div className={styles.playlistTitle}>{playlist.title}</div>
-        <button className={styles.deleteButton} onClick={handleDeletePlaylist}>
+        <Button type={BUTTON_TYPES.delete} onClick={handleDeletePlaylist}>
           Delete Playlist
-        </button>
+        </Button>
       </div>
       {playlistContent}
-    </>
+    </div>
   );
 }
 

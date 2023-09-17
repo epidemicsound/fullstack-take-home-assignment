@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PlaylistRow from "../rows/PlaylistRow";
-import styles from "./PlaylistsTab.module.css";
 import CreatePlaylistForm from "../form/CreatePlaylistForm";
+import Button, { BUTTON_TYPES } from "../buttons/Button";
 
 function PlaylistsTab() {
   const [playlists, setPlaylists] = useState([]);
@@ -34,9 +34,9 @@ function PlaylistsTab() {
 
   return (
     <div>
-      <button className={styles.createButton} onClick={handleCreatePlaylist}>
+      <Button type={BUTTON_TYPES.button} onClick={handleCreatePlaylist}>
         Create Playlist
-      </button>
+      </Button>
       {isFormOpen && (
         <CreatePlaylistForm onFinish={handleCreatePlaylistFinish} />
       )}

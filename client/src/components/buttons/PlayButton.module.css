@@ -1,0 +1,11 @@
+.trackPlay {
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 50%;
+  background: #333;
+  box-shadow: 0;
+  border: 0;
+  margin-right: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+}

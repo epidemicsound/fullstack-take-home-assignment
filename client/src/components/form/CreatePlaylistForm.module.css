@@ -4,24 +4,6 @@
   align-items: center;
 }
 
-.createButton {
-  border: 1px solid #333;
-  font-weight: 600;
-  color: #fff;
-  background-color: #333333;
-  padding: 1rem 2rem;
-  cursor: pointer;
-}
-
-.cancelButton {
-  border: 1px solid #333;
-  font-weight: 600;
-  color: #fff;
-  background-color: #333333;
-  padding: 1rem 2rem;
-  cursor: pointer;
-}
-
 .buttons {
   display: flex;
   gap: 1rem;

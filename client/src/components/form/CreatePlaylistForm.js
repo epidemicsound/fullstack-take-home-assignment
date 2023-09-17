@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./CreatePlaylistForm.module.css";
+import Button, { BUTTON_TYPES } from "../buttons/Button";
 function CreatePlaylistForm({ onFinish }) {
   const [title, setTitle] = useState("");
 
@@ -32,16 +33,10 @@ function CreatePlaylistForm({ onFinish }) {
           />
         </label>
         <div className={styles.buttons}>
-          <button className={styles.createButton} type="submit">
-            Create
-          </button>
-          <button
-            className={styles.cancelButton}
-            type="button"
-            onClick={handleCancel}
-          >
+          <Button type={BUTTON_TYPES.submit}>Create</Button>
+          <Button type={BUTTON_TYPES.button} onClick={handleCancel}>
             Cancel
-          </button>
+          </Button>
         </div>
       </form>
     </div>

@@ -13,7 +13,12 @@
 }
 
 .playlistRow:hover {
-  background-color: rgba(0, 157, 224, 0.1);
+  background-color: rgba(255,255,255,.06667);
+}
+
+.playlistRowOpen {
+  background-color: rgba(255,255,255,.1);
+  border-bottom: 2px solid #ffffff;
 }
 
 .playlistOpen {
@@ -34,11 +39,4 @@
 
 .trackArtist {
   color: #767676;
-}
-
-.deleteButton {
-  color: #fff;
-  background-color: rgba(224, 0, 67, 0.5);
-  border: rgba(224, 0, 67, 0.5);
-  padding: 1rem 2rem;
 }
