@@ -5,16 +5,21 @@ from rest_framework.decorators import action
 from rest_framework.request import Request
 from rest_framework.response import Response
 
-from api import models, serializers
+from api import models, serializers, const
 from api.services import playlists as service
 
 
 class PlaylistViewSet(viewsets.ModelViewSet):
     queryset = models.Playlist.objects.all()
-    serializer_class = serializers.PlaylistTracksSerializer
     permission_classes = [
         permissions.AllowAny
     ]  # TODO: update permissions to authorized user
+
+    def get_serializer_class(self):
+        if self.action == const.LIST_ACTION:
+            return serializers.PlaylistSerializer
+
+        return serializers.PlaylistTracksSerializer
 
     @action(methods=["get"], detail=True, url_path="tracks")
     def playlist_tracks(

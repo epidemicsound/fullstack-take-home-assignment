@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from api import models
+from api.serializers import TrackSerializer
 
 
 class PlaylistSerializer(serializers.ModelSerializer):
@@ -13,7 +14,7 @@ class PlaylistSerializer(serializers.ModelSerializer):
 
 
 class PlaylistTracksSerializer(PlaylistSerializer):
-    tracks = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    tracks = TrackSerializer(many=True, read_only=True)
 
     class Meta:
         model = models.Playlist
