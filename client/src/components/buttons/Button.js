@@ -18,7 +18,12 @@ function Button({ type, children, onClick }) {
   const innerType = type === BUTTON_TYPES.submit ? type : BUTTON_TYPES.button;
 
   return (
-    <button className={className} onClick={onClick} type={innerType}>
+    <button
+      className={className}
+      onClick={onClick}
+      type={innerType}
+      data-testid="button"
+    >
       {children}
     </button>
   );

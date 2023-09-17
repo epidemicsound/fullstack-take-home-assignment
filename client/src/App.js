@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import styles from "./App.module.css";
 import logo from "./assets/logo.svg";
 
-import AudioPlayer from "./components/AudioPlayer";
+import AudioPlayer from "./components/audio-player/AudioPlayer";
 import TracksTab from "./components/tabs/TracksTab";
 import PlaylistsTab from "./components/tabs/PlaylistsTab";
 import { usePlay } from "./context/PlayContext";

@@ -3,7 +3,11 @@ import styles from "./AddButton.module.css";
 
 function AddButton({ onClick }) {
   return (
-    <button className={styles.addButton} onClick={onClick}>
+    <button
+      className={styles.addButton}
+      onClick={onClick}
+      data-testid="add-button"
+    >
       <svg
         width="24"
         height="24"

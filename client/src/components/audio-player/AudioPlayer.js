@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import styles from "./AudioPlayer.module.css";
-import { usePlay } from "../context/PlayContext";
-import PlayButton from "./buttons/PlayButton";
+import { usePlay } from "../../context/PlayContext";
+import PlayButton from "../buttons/PlayButton";
 
 function AudioPlayer({ track }) {
   const { isPlaying, setIsPlaying } = usePlay();
