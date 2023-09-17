@@ -3,10 +3,16 @@
   align-items: center;
   height: 5rem;
   border-bottom: 1px solid #333;
+  justify-content: space-between;
+  padding: 0 4rem;
 }
 
 .playlistRow:last-child {
   border-bottom: none;
+}
+
+.playlistRow:hover {
+  background-color: rgba(0, 157, 224, 0.1);
 }
 
 .playlistOpen {
@@ -27,4 +33,11 @@
 
 .trackArtist {
   color: #767676;
+}
+
+.deleteButton {
+  color: #fff;
+  background-color: rgba(224, 0, 67, 0.5);
+  border: rgba(224, 0, 67, 0.5);
+  padding: 1rem 2rem;
 }

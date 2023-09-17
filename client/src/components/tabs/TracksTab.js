@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TrackRow from "../TrackRow";
+import TrackRow from "../rows/TrackRow";
 
 function TracksTab() {
   const [tracks, setTracks] = useState([]);

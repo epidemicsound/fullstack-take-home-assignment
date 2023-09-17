@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import PlaylistRow from "../PlaylistRow";
+import PlaylistRow from "../rows/PlaylistRow";
+import styles from "./PlaylistsTab.module.css";
 
 function PlaylistsTab() {
   const [playlists, setPlaylists] = useState([]);
@@ -10,8 +11,13 @@ function PlaylistsTab() {
       .then((data) => setPlaylists(data));
   }, []);
 
+  const handleCreatePlaylist = () => null;
+
   return (
     <div>
+      <button className={styles.createButton} onClick={handleCreatePlaylist}>
+        Create Playlist
+      </button>
       {playlists.map((playlist, idx) => (
         <PlaylistRow key={idx} playlist={playlist} />
       ))}
