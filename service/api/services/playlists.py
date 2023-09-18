@@ -1,13 +1,13 @@
 import logging
-from typing import List, Union
+from typing import List, Union, Tuple, Sequence
 
-from django.db import IntegrityError
+from django.db import IntegrityError, DataError
 from django.http import Http404
 
-from api import models
+from api import models, const
 
 
-def get_playlist_tracks(playlist: models.Playlist):
+def get_playlist_tracks(playlist: models.Playlist) -> Sequence[models.Track]:
     tracks = models.Track.objects.filter(playlists__exact=playlist).order_by(
         "playlisttrack__order"
     )
@@ -17,7 +17,7 @@ def get_playlist_tracks(playlist: models.Playlist):
 def add_track_to_playlist(
     playlist: models.Playlist,
     tracks_data: List[dict],
-) -> List[str]:
+) -> Tuple[Sequence[models.Track], List[Tuple[str, str]]]:
     errors = []
 
     last_order = __get_last_order(playlist=playlist)
@@ -33,10 +33,13 @@ def add_track_to_playlist(
             last_order += 1
 
         except IntegrityError as e:
-            errors.append(track)
+            errors.append((const.FAILED_TO_ADD, track))
+
+        except DataError as e:
+            errors.append((const.INVALID_DATA, track))
 
     logging.warning(f"Failed to add these tracks to playlist: [{errors}]")
-    return get_playlist_tracks(playlist)
+    return get_playlist_tracks(playlist), errors
 
 
 def __get_last_order(playlist: models.Playlist) -> int:

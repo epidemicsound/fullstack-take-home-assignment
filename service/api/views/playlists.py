@@ -38,7 +38,8 @@ class PlaylistViewSet(viewsets.ModelViewSet):
         request: Request,
         pk: Optional[str] = None,
     ) -> Response:
-        tracks = service.add_track_to_playlist(
+        # TODO: return errors
+        tracks, errors = service.add_track_to_playlist(
             playlist=self.get_object(),
             tracks_data=request.data,
         )
