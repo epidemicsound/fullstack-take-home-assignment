@@ -28,7 +28,7 @@ class PlaylistServiceTestCase(TestCase):
 
     def test_add_track_to_playlist(self):
         tracks_data = [{"track_id": self.track1.id}, {"track_id": self.track2.id}]
-        added_tracks = service.add_track_to_playlist(self.playlist, tracks_data)
+        added_tracks, errors = service.add_track_to_playlist(self.playlist, tracks_data)
 
         self.assertEqual(list(added_tracks), [self.track1, self.track2])
 
