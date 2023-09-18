@@ -50,6 +50,12 @@ class PlaylistViewSetTestCase(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+        data = response.json()
+        self.assertEqual(len(data), 1)
+
+        track = data[0]
+        self.assertEqual(track["id"], self.playlist_track1.track_id)
+
     def test_add_track_to_playlist(self):
         data = [{"track_id": self.track2.id}]
         url = reverse("playlist-playlist-tracks", args=[self.playlist.id])
