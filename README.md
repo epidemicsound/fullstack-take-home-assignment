@@ -68,3 +68,33 @@ You're free to use whatever you want. The important thing is that you can explai
 
 ### What if I get stuck?
 Don’t worry! Reach out to your contact at Epidemic Sound and we’ll help unblock you!
+
+## Notes and considerations
+
+- The backend parts were extracted and structured in packages in `api` app.
+- Logic parts / DB interaction are separated from views and serializers as much
+  as possible.
+- For future complex logic, it would probably be better to use separate apps,
+  for example, as in case with playlists. Then `api` app would be only a service
+  that exposes data for client.
+- Playlists functionality is covered by unit/integration tests on a level of
+  models, service and views.
+- More work can be done on tracks ordering part of playlists. For example,
+  currently it is assumed that order is an integer sequential number of track in
+  that playlist. However, if the reordering functionality would be implemented
+  over this structure, it is possible, that many reorderings can become
+  long-running update queries in the database.
+- Caching layer can be presented for storing frequently-retrieved data regarding
+  the playlists.
+- There is not much error handling in the app in this version, and the user
+  would receive simple error responses without much details.
+- Permissions are not implemented, and all editing actions on playlists are done
+  freely.
+- Project is running as before using docker-compose. However, of course, for
+  production it should be running with specific production configuration. For
+  example, utilizing `gunicorn` for Django app.
+- For the frontend, it would be better to use routing mechanism for tabs.
+- Some design parts, like buttons, can be further improved to have a single,
+  unified design system.
+- User interaction with playlists can be improved, now it's done in a really
+  simple way.
