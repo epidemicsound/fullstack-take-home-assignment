@@ -23,7 +23,7 @@ def add_track_to_playlist(
     last_order = __get_last_order(playlist=playlist)
     for track in tracks_data:
         try:
-            track_instance = models.Track.objects.filter(id=track["track_id"])
+            track_instance = models.Track.objects.get(id=track["track_id"])
         except models.Track.DoesNotExist:
             errors.append((const.TRACK_NOT_FOUND, track))
             continue
