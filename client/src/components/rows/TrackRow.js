@@ -45,7 +45,7 @@ function TrackRow({
         </div>
         <div className={styles.actionButton}>
           {showAddToPlaylistButton && (
-            <AddButton onClick={() => setShowPlaylists(true)} />
+            <AddButton onClick={() => setShowPlaylists(!showPlaylists)} />
           )}
           {showDeleteButton && (
             <Button type={BUTTON_TYPES.delete} onClick={onButtonClick}>
