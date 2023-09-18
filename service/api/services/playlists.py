@@ -17,13 +17,19 @@ def get_playlist_tracks(playlist: models.Playlist) -> Sequence[models.Track]:
 def add_track_to_playlist(
     playlist: models.Playlist,
     tracks_data: List[dict],
-) -> Tuple[Sequence[models.Track], List[Tuple[str, str]]]:
+) -> Tuple[Sequence[models.Track], List[Tuple[str, dict]]]:
     errors = []
 
     last_order = __get_last_order(playlist=playlist)
     for track in tracks_data:
+        try:
+            track_instance = models.Track.objects.filter(id=track["track_id"])
+        except models.Track.DoesNotExist:
+            errors.append((const.TRACK_NOT_FOUND, track))
+            continue
+
         playlist_track = models.PlaylistTrack(
-            track_id=track["track_id"],
+            track=track_instance,
             playlist=playlist,
             order=last_order + 1,
         )
@@ -32,10 +38,10 @@ def add_track_to_playlist(
             playlist_track.save()
             last_order += 1
 
-        except IntegrityError as e:
+        except IntegrityError:
             errors.append((const.FAILED_TO_ADD, track))
 
-        except DataError as e:
+        except DataError:
             errors.append((const.INVALID_DATA, track))
 
     logging.warning(f"Failed to add these tracks to playlist: [{errors}]")
