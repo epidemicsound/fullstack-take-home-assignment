@@ -48,3 +48,22 @@ class Track(models.Model):
     @property
     def spotify(self):
         return "{}{}/{}".format(settings.DSP_BASE, self.id, "spotify")
+
+class Playlist(models.Model):
+    id = models.CharField(primary_key=True, max_length=10)
+    name = models.CharField(max_length=200, null=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    tracks = models.ManyToManyField(Track, related_name="track")
+
+    @property
+    def cover_art(self):
+        return "{}{}.{}".format(settings.ASSETS_BASE, self.id, "jpg")
+    
+    def insert_track(self, track):
+        self.tracks.add(track)
+        self.save()
+
+    def remove_track(self, track):
+        self.tracks.remove(track)
+        self.save()
