@@ -1,0 +1,42 @@
+.playlistRow {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  border-bottom: 1px solid #333;
+  justify-content: space-between;
+  padding: 0 4rem;
+  cursor: pointer;
+}
+
+.playlistRow:last-child {
+  border-bottom: none;
+}
+
+.playlistRow:hover {
+  background-color: rgba(255,255,255,.06667);
+}
+
+.playlistRowOpen {
+  background-color: rgba(255,255,255,.1);
+  border-bottom: 2px solid #ffffff;
+}
+
+.playlistOpen {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: #333;
+  box-shadow: 0;
+  border: 0;
+  margin-right: 1rem;
+  padding: 0;
+  cursor: pointer;
+}
+
+.playlistTitle {
+  font-weight: 600;
+}
+
+.trackArtist {
+  color: #767676;
+}

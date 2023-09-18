@@ -36,3 +36,5 @@ services:
       - "3000:3000"
     depends_on:
       - service
+    environment:
+      - REACT_APP_API_HOST=http://service:8000

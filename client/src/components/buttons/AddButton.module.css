@@ -1,0 +1,19 @@
+.addButton {
+  color: rgba(255, 255, 255, 0.6);
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.addButton:hover {
+  background: rgba(255, 255, 255, 0.067);
+}
+.addButton:focus {
+  background: rgba(255, 255, 255, 0.067);
+  border: 2px solid rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  outline: none;
+}

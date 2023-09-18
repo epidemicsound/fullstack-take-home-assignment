@@ -1,21 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import styles from "./App.module.css";
 import logo from "./assets/logo.svg";
 
-import TrackRow from "./components/TrackRow";
-import AudioPlayer from "./components/AudioPlayer";
+import AudioPlayer from "./components/audio-player/AudioPlayer";
+import TracksTab from "./components/tabs/TracksTab";
+import PlaylistsTab from "./components/tabs/PlaylistsTab";
+import { usePlay } from "./context/PlayContext";
+
+const TABS = {
+  tracks: "tracks",
+  playlists: "playlists",
+};
 
 function App() {
-  const [tracks, setTracks] = useState([]);
-  const [currentTrack, setCurrentTrack] = useState();
+  const { currentTrack } = usePlay();
+  const [activeTab, setActiveTab] = useState(TABS.tracks);
 
-  useEffect(() => {
-    fetch("http://0.0.0.0:8000/tracks/", { mode: "cors" })
-      .then((res) => res.json())
-      .then((data) => setTracks(data));
-  }, []);
+  const Component = useMemo(() => {
+    const tabComponents = {
+      [TABS.tracks]: TracksTab,
+      [TABS.playlists]: PlaylistsTab,
+    };
 
-  const handlePlay = (track) => setCurrentTrack(track);
+    return tabComponents[activeTab];
+  }, [activeTab]);
 
   return (
     <>
@@ -24,19 +32,27 @@ function App() {
           <img src={logo} className={styles.logo} alt="Logo" />
           <ul className={styles.menu}>
             <li>
-              <a href="#" className={styles.active}>
+              <a
+                href="#"
+                className={activeTab === TABS.tracks ? styles.active : ""}
+                onClick={() => setActiveTab(TABS.tracks)}
+              >
                 Tracks
               </a>
             </li>
             <li>
-              <a href="#">Playlists</a>
+              <a
+                href="#"
+                className={activeTab === TABS.playlists ? styles.active : ""}
+                onClick={() => setActiveTab(TABS.playlists)}
+              >
+                Playlists
+              </a>
             </li>
           </ul>
         </nav>
-        {tracks.map((track, ix) => (
-          <TrackRow key={ix} track={track} handlePlay={handlePlay} />
-        ))}
       </main>
+      <Component />
       {currentTrack && <AudioPlayer track={currentTrack} />}
     </>
   );

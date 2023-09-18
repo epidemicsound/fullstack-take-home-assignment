@@ -1,0 +1,22 @@
+.createPlaylistForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: .5rem 1rem;
+  background-color: #767676;
+  border: 1px solid #767676;
+}
