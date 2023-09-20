@@ -35,6 +35,16 @@ class Playlist(APIView):
         print(serialized_playlist)
 
         return Response(serialized_playlist.data, status=status.HTTP_201_CREATED)
+    
+    def delete(self, request):
+        # Delete a playlist
+        try:
+            playlist = models.Playlist.objects.get(id=request.data["id"])
+        except models.Playlist.DoesNotExist:
+            return Response({"error": "Playlist not found"}, status=status.HTTP_404_NOT_FOUND)
+        playlist.delete()
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class InsertTrackIntoPlaylist(APIView):
     def post(self, request, playlist_id, track_id):
@@ -47,6 +57,22 @@ class InsertTrackIntoPlaylist(APIView):
 
         # Add the track to the playlist
         playlist.tracks.add(track)
+
+        # Serialize the updated playlist
+        serialized_playlist = serializers.PlaylistSerializer(playlist)
+
+        return Response(serialized_playlist.data, status=status.HTTP_200_OK)
+    
+    def delete(self, request, playlist_id, track_id):
+        try:
+            # Retrieve the playlist and track objects
+            playlist = models.Playlist.objects.get(id=playlist_id)
+            track = models.Track.objects.get(id=track_id)
+        except (models.Playlist.DoesNotExist, models.Track.DoesNotExist):
+            return Response({"error": "Playlist or Track not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        # Remove the track from the playlist
+        playlist.tracks.remove(track)
 
         # Serialize the updated playlist
         serialized_playlist = serializers.PlaylistSerializer(playlist)
