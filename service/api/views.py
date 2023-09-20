@@ -35,3 +35,20 @@ class Playlist(APIView):
         print(serialized_playlist)
 
         return Response(serialized_playlist.data, status=status.HTTP_201_CREATED)
+
+class InsertTrackIntoPlaylist(APIView):
+    def post(self, request, playlist_id, track_id):
+        try:
+            # Retrieve the playlist and track objects
+            playlist = models.Playlist.objects.get(id=playlist_id)
+            track = models.Track.objects.get(id=track_id)
+        except (models.Playlist.DoesNotExist, models.Track.DoesNotExist):
+            return Response({"error": "Playlist or Track not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        # Add the track to the playlist
+        playlist.tracks.add(track)
+
+        # Serialize the updated playlist
+        serialized_playlist = serializers.PlaylistSerializer(playlist)
+
+        return Response(serialized_playlist.data, status=status.HTTP_200_OK)
