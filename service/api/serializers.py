@@ -32,10 +32,13 @@ class PlaylistSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Playlist
         fields = [
-            "id",
             "name",
             "created_at",
             "updated_at",
-            "tracks",
-            "cover_art",
+            "tracks"
         ]
+        extra_kwargs = {
+        'tracks': {
+            'required': False,
+        },
+    }
