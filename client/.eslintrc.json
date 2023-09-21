@@ -11,8 +11,9 @@
       "jsx": true
     }
   },
-  "plugins": ["react", "react-hooks"],
+  "plugins": ["react", "react-hooks", "prettier"],
   "rules": {
+    "prettier/prettier": "error",
     "react/prop-types": 0
   }
 }

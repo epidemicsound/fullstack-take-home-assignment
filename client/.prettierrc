@@ -1,0 +1,18 @@
+{
+  "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "htmlWhitespaceSensitivity": "css",
+  "insertPragma": false,
+  "jsxBracketSameLine": false,
+  "jsxSingleQuote": true,
+  "parser": "babel",
+  "printWidth": 80,
+  "proseWrap": "preserve",
+  "requirePragma": false,
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "none",
+  "endOfLine": "auto",
+  "useTabs": false
+}
