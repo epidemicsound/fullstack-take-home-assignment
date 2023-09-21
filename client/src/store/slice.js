@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { setCurrentTrack } from './actions';
+import { setCurrentTrack, setPlaylists } from './actions';
 
 const initialState = {
-  currentTrack: undefined
+  currentTrack: undefined,
+  playlists: []
 };
 
 const playerSlice = createSlice({
@@ -10,9 +11,13 @@ const playerSlice = createSlice({
   name: 'player',
   reducers: {},
   extraReducers: builder => {
-    builder.addCase(setCurrentTrack, (state, action) => {
-      state.currentTrack = action.payload;
-    });
+    builder
+      .addCase(setCurrentTrack, (state, action) => {
+        state.currentTrack = action.payload;
+      })
+      .addCase(setPlaylists.fulfilled, (state, action) => {
+        state.playlists = action.payload;
+      });
   }
 });
 

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './App.module.css';
 import logo from './assets/logo.svg';
 
 import AudioPlayer from './components/AudioPlayer';
 import Tracks from './views/Tracks';
 import Playlists from './views/Playlists';
+import { setPlaylists } from './store/actions';
 
 const VIEW_STATES = {
   TRACKS: 0,
@@ -13,6 +14,7 @@ const VIEW_STATES = {
 };
 
 function App() {
+  const dispatch = useDispatch();
   const [tracks, setTracks] = useState([]);
   const [viewState, setViewState] = useState(VIEW_STATES.TRACKS);
 
@@ -23,6 +25,14 @@ function App() {
       .then(res => res.json())
       .then(data => setTracks(data));
   }, []);
+
+  useEffect(() => {
+    fetch('http://0.0.0.0:8000/playlists/', { mode: 'cors' })
+      .then(res => res.json())
+      .then(data => {
+        dispatch(setPlaylists(data));
+      });
+  }, [dispatch]);
 
   const Views = () => {
     switch (viewState) {

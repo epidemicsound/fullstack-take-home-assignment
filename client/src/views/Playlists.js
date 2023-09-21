@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './Playlists.module.css';
 import { formatDate } from '../util/formatter';
 import Tracks from './Tracks';
+import { useSelector } from 'react-redux';
 
 const Playlists = () => {
-  const [playlists, setPlaylists] = useState([]);
   const [selectedPlaylist, setSelectedPlaylist] = useState(null);
-
-  useEffect(() => {
-    fetch('http://0.0.0.0:8000/playlists/', { mode: 'cors' })
-      .then(res => res.json())
-      .then(data => setPlaylists(data));
-  }, []);
+  const { playlists } = useSelector(state => state.player);
 
   const handleSelectPlaylist = playlist => {
     setSelectedPlaylist(playlist);
