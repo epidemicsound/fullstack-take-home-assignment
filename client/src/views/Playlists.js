@@ -27,7 +27,7 @@ const Playlists = () => {
           </div>
         ))}
       </ul>
-      {selectedPlaylist && <Tracks className={styles.playlistTracks} tracks={selectedPlaylist.tracks} />}
+      {selectedPlaylist && <Tracks className={styles.playlistTracks} tracks={selectedPlaylist.tracks} playlistId={selectedPlaylist.id} />}
     </div>
   )
 }

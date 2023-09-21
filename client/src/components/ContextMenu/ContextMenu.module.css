@@ -1,0 +1,24 @@
+.contextMenuContainer {
+    border: thin solid grey;
+    border-bottom: none;
+    width: 20rem;
+    position: fixed;
+}
+
+.contextMenuList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.contextMenuList__item {
+    background-color: black;
+    padding: 10px 10px;
+    border-bottom: thin solid grey;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.contextMenuList__item:hover {
+    background-color: grey;
+}
