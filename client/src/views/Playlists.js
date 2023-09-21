@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import PlaylistRow from '../components/PlaylistRow';
+import styles from './Playlists.module.css'
+import { formatDate } from '../util/formatter';
 
 const Playlists = () => {
   const [playlists, setPlaylists] = useState([]);
@@ -10,9 +11,18 @@ const Playlists = () => {
       .then((data) => setPlaylists(data));
   }, []);
 
-    return playlists.map((playlist, ix) => (
-        <PlaylistRow key={`playlist-${ix}`} playlist={playlist}  />
-    ))
+    return (
+      <div className={styles.playlistContainer}>
+        <ul className={styles.playlistMenu}>
+          {playlists.map((playlist, ix) => (
+            <div key={`playlist-${ix}`} className={styles.playlistItem__container}>
+              <li className={styles.playlistItem__title}>{playlist.name}</li>
+              <span className={styles.playlistItem__subtitle}>{formatDate(playlist.created_at)}</span>
+            </div>
+          ))}
+        </ul>
+      </div>
+    )
 }
 
 export default Playlists;
