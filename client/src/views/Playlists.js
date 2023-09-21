@@ -22,7 +22,7 @@ const Playlists = () => {
       <ul className={styles.playlistMenu}>
         {playlists.map((playlist, ix) => (
           <div key={`playlist-${ix}`} className={styles.playlistItem__container} onClick={() => handleSelectPlaylist(playlist)}>
-            <li className={styles.playlistItem__title}>{playlist.name}</li>
+            <li className={`${styles.playlistItem__title} ${playlist.id === selectedPlaylist?.id && styles.playlistItem__active}`}>{playlist.name}</li>
             <span className={styles.playlistItem__subtitle}>{formatDate(playlist.created_at)}</span>
           </div>
         ))}
