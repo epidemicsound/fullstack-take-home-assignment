@@ -24,9 +24,12 @@
     color: #767676;
 }
 
-.playlistItem {
-}
-
 .playlistItem__active {
     color: #1db954;
+}
+
+.playlistTracks {
+    grid-column: 2 / 3;
+    overflow-y: scroll;
+    height: 100%;
 }
