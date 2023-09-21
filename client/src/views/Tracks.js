@@ -1,45 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TrackRow from '../components/TrackRow';
 import { useDispatch } from 'react-redux';
 import { setCurrentTrack } from '../store/actions';
-import { ContextMenu } from "../components/ContextMenu/ContextMenu";
-import { trackRowContextMenu } from '../components/ContextMenu/contextMenuLists'
-import useContextMenu from "../hooks/useContextMenu";
+import useContextMenu from '../hooks/useContextMenu';
+import TrackRowContextMenu from '../components/TrackRowContextMenu';
 
-const Tracks = (props) => {
+const Tracks = props => {
   const { tracks, playlistId } = props;
   const dispatch = useDispatch();
   const { clicked, setClicked, points, setPoints } = useContextMenu();
+  const [selectedTrackId, setSelectedTrackId] = useState(null);
 
-  const TrackRowContextMenu = () => {
-    let menuData = [...trackRowContextMenu];
-    if(!playlistId) {
-      menuData.filter(item => item.value !== 'remove_from_playlist')
-    }
+  const handlePlay = track => dispatch(setCurrentTrack(track));
 
-    return clicked && <ContextMenu menuData={menuData} top={points.y} left={points.x} />
-  }
-
-  const handlePlay = (track) => dispatch(setCurrentTrack(track));
-  
   return (
     <>
       {tracks.map((track, ix) => (
-        <div key={ix} onContextMenu={(e) => {
-          e.preventDefault();
-          setClicked(true);
-          setPoints({
-            x: e.pageX,
-            y: e.pageY,
-          });
-          console.log("Right Click", e.pageX, e.pageY);
-        }}>
-          <TrackRow track={track} handlePlay={handlePlay}/>
+        <div
+          key={ix}
+          onContextMenu={e => {
+            e.preventDefault();
+            setClicked(true);
+            setPoints({
+              x: e.pageX,
+              y: e.pageY
+            });
+            setSelectedTrackId(track.id);
+            console.log('Right Click', e.pageX, e.pageY);
+          }}
+        >
+          <TrackRow track={track} handlePlay={handlePlay} />
         </div>
       ))}
-      <TrackRowContextMenu />
+      <TrackRowContextMenu
+        playlistId={playlistId}
+        trackId={selectedTrackId}
+        clicked={clicked}
+        points={points}
+      />
     </>
-  )
-}
+  );
+};
 
 export default Tracks;
