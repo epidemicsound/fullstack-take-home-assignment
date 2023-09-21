@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from 'react-redux';
 import styles from "./App.module.css";
 import logo from "./assets/logo.svg";
 
@@ -13,8 +14,9 @@ const VIEW_STATES = {
 
 function App() {
   const [tracks, setTracks] = useState([]);
-  const [currentTrack, setCurrentTrack] = useState();
   const [viewState, setViewState] = useState(VIEW_STATES.TRACKS);
+
+  const { currentTrack } = useSelector(state => state.player)
 
   useEffect(() => {
     fetch("http://0.0.0.0:8000/tracks/", { mode: "cors" })
@@ -28,7 +30,7 @@ function App() {
         return <Playlists />
       case VIEW_STATES.TRACKS:
       default:
-        return <Tracks tracks={tracks} setCurrentTrack={setCurrentTrack} />
+        return <Tracks tracks={tracks} />
     }
   }
 
