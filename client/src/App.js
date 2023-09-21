@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./App.module.css";
 import logo from "./assets/logo.svg";
 
@@ -12,8 +12,15 @@ const VIEW_STATES = {
 }
 
 function App() {
+  const [tracks, setTracks] = useState([]);
   const [currentTrack, setCurrentTrack] = useState();
   const [viewState, setViewState] = useState(VIEW_STATES.TRACKS);
+
+  useEffect(() => {
+    fetch("http://0.0.0.0:8000/tracks/", { mode: "cors" })
+      .then((res) => res.json())
+      .then((data) => setTracks(data));
+  }, []);
 
   const Views = () => {
     switch(viewState) {
@@ -21,7 +28,7 @@ function App() {
         return <Playlists />
       case VIEW_STATES.TRACKS:
       default:
-        return <Tracks setCurrentTrack={setCurrentTrack} />
+        return <Tracks tracks={tracks} setCurrentTrack={setCurrentTrack} />
     }
   }
 
