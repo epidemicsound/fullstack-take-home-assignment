@@ -1,11 +1,10 @@
 .modal {
-    width: 20rem;
-    height: 10rem;
-    background: black;
-    border: 1px solid grey;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
+  width: 20rem;
+  height: 10rem;
+  background: black;
+  border: 1px solid grey;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
 }
-

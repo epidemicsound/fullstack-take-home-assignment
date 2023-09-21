@@ -14,5 +14,13 @@
   "tabWidth": 2,
   "trailingComma": "none",
   "endOfLine": "auto",
-  "useTabs": false
+  "useTabs": false,
+  "overrides": [
+    {
+      "files": "*.css",
+      "options": {
+        "parser": "css"
+      }
+    }
+  ]
 }
