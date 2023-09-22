@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Playlists.module.css';
 import { formatDate } from '../util/formatter';
 import Tracks from './Tracks';
@@ -18,6 +18,13 @@ const Playlists = () => {
   const handleCreatePlaylist = () => {
     setShowCreatePlaylistModal(true);
   };
+
+  useEffect(() => {
+    const updatedPlaylist = playlists.find(
+      playlist => playlist.id === selectedPlaylist?.id
+    );
+    setSelectedPlaylist(updatedPlaylist);
+  }, [playlists, selectedPlaylist?.id]);
 
   return (
     <>

@@ -1,30 +1,28 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { ContextMenu } from './ContextMenu/ContextMenu';
 import Modal from './Modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './TrackRowContextMenu.module.css';
-import { addTrackToPlaylist, setPlaylists } from '../store/actions';
+import { addTrackToPlaylist, removeTrackFromPlaylist } from '../store/actions';
 
 const TrackRowContextMenu = props => {
   const dispatch = useDispatch();
   const { playlistId, trackId, clicked, points } = props;
   const [showAddTrackModal, setShowAddTrackModal] = useState(false);
-  const [lastOperation, setLastOperation] = useState(null);
   const [selectedPlaylistToAdd, setSelectedPlaylistToAdd] = useState(null);
 
   const { playlists } = useSelector(state => state.player);
-
-  useEffect(() => {
-    console.log('lastOperation', lastOperation);
-  }, [lastOperation]);
 
   const onAddTrackToPlaylist = async () => {
     dispatch(
       addTrackToPlaylist({ playlistId: selectedPlaylistToAdd, trackId })
     );
     setShowAddTrackModal(false);
+  };
+
+  const onRemoveTrackFromPlaylist = async () => {
+    dispatch(removeTrackFromPlaylist({ playlistId: playlistId, trackId }));
   };
 
   const trackRowContextMenu = [
@@ -34,13 +32,16 @@ const TrackRowContextMenu = props => {
       onClick: () => {
         setShowAddTrackModal(true);
       }
-    },
-    {
-      label: 'Remove from playlist',
-      value: 'remove_from_playlist',
-      onClick: () => console.log('Remove from playlist')
     }
   ];
+
+  if (playlistId) {
+    trackRowContextMenu.push({
+      label: 'Remove from playlist',
+      value: 'remove_from_playlist',
+      onClick: onRemoveTrackFromPlaylist
+    });
+  }
 
   return (
     <>

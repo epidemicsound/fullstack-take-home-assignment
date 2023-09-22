@@ -3,6 +3,7 @@ import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 const ACTION_TYPES = {
   SET_PLAYLISTS: 'PLAYER/SET_PLAYLISTS',
   ADD_TRACK_TO_PLAYLIST: 'PLAYER/ADD_TRACK_TO_PLAYLIST',
+  REMOVE_TRACK_FROM_PLAYLIST: 'PLAYER/REMOVE_TRACK_FROM_PLAYLIST',
   CREATE_PLAYLIST: 'PLAYER/CREATE_PLAYLIST',
   SET_CURRENT_TRACK: 'PLAYER/SET_CURRENT_TRACK'
 };
@@ -26,6 +27,22 @@ export const addTrackToPlaylist = createAsyncThunk(
       `http://0.0.0.0:8000/playlists/${playlistId}/tracks/${trackId}/`,
       {
         method: 'POST',
+        mode: 'cors'
+      }
+    ).then(res => res.json());
+
+    return response;
+  }
+);
+
+export const removeTrackFromPlaylist = createAsyncThunk(
+  ACTION_TYPES.REMOVE_TRACK_FROM_PLAYLIST,
+  async payload => {
+    const { playlistId, trackId } = payload;
+    const response = await fetch(
+      `http://0.0.0.0:8000/playlists/${playlistId}/tracks/${trackId}/`,
+      {
+        method: 'DELETE',
         mode: 'cors'
       }
     ).then(res => res.json());
