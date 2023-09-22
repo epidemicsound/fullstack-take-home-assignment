@@ -13,6 +13,7 @@
 .playlistItem__container {
   padding: 20px 0;
   border-bottom: thin solid grey;
+  cursor: pointer;
 }
 
 .playlistItem__title {
