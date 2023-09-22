@@ -2,7 +2,7 @@
   border: thin solid grey;
   border-bottom: none;
   width: 20rem;
-  position: fixed;
+  position: absolute;
 }
 
 .contextMenuList {

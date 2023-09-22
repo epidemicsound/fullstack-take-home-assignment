@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { setCurrentTrack, setPlaylists } from './actions';
+import { addTrackToPlaylist, setCurrentTrack, setPlaylists } from './actions';
 
 const initialState = {
   currentTrack: undefined,
@@ -17,6 +17,12 @@ const playerSlice = createSlice({
       })
       .addCase(setPlaylists.fulfilled, (state, action) => {
         state.playlists = action.payload;
+      })
+      .addCase(addTrackToPlaylist.fulfilled, (state, action) => {
+        const playlistIndex = state.playlists.findIndex(
+          playlist => playlist.id === action.payload.id
+        );
+        state.playlists[playlistIndex] = action.payload;
       });
   }
 });

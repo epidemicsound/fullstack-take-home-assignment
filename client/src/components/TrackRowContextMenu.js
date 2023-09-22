@@ -2,15 +2,30 @@
 import React, { useEffect, useState } from 'react';
 import { ContextMenu } from './ContextMenu/ContextMenu';
 import Modal from './Modal/Modal';
+import { useDispatch, useSelector } from 'react-redux';
+
+import styles from './TrackRowContextMenu.module.css';
+import { addTrackToPlaylist, setPlaylists } from '../store/actions';
 
 const TrackRowContextMenu = props => {
+  const dispatch = useDispatch();
   const { playlistId, trackId, clicked, points } = props;
   const [showAddTrackModal, setShowAddTrackModal] = useState(false);
   const [lastOperation, setLastOperation] = useState(null);
+  const [selectedPlaylistToAdd, setSelectedPlaylistToAdd] = useState(null);
+
+  const { playlists } = useSelector(state => state.player);
 
   useEffect(() => {
     console.log('lastOperation', lastOperation);
   }, [lastOperation]);
+
+  const onAddTrackToPlaylist = async () => {
+    dispatch(
+      addTrackToPlaylist({ playlistId: selectedPlaylistToAdd, trackId })
+    );
+    setShowAddTrackModal(false);
+  };
 
   const trackRowContextMenu = [
     {
@@ -19,17 +34,6 @@ const TrackRowContextMenu = props => {
       onClick: () => {
         setShowAddTrackModal(true);
       }
-      //   onClick: async () => {
-      //     await fetch(
-      //       `http://0.0.0.0:8000/playlists/${playlistId}/tracks/${trackId}`,
-      //       {
-      //         method: 'POST',
-      //         mode: 'cors'
-      //       }
-      //     )
-      //       .then(res => res.json())
-      //       .then(data => setLastOperation(data));
-      //   }
     },
     {
       label: 'Remove from playlist',
@@ -37,21 +41,49 @@ const TrackRowContextMenu = props => {
       onClick: () => console.log('Remove from playlist')
     }
   ];
-  if (!playlistId) {
-    trackRowContextMenu.filter(item => item.value !== 'remove_from_playlist');
-  }
 
   return (
-    clicked && (
-      <>
+    <>
+      {clicked && (
         <ContextMenu
           menuData={trackRowContextMenu}
           top={points.y}
           left={points.x}
         />
-        <Modal show={showAddTrackModal}></Modal>
-      </>
-    )
+      )}
+      <Modal show={showAddTrackModal}>
+        <h2>Select playlist</h2>
+        <select
+          className={styles.selectPlaylistDropdown}
+          value={selectedPlaylistToAdd}
+          onChange={e => setSelectedPlaylistToAdd(e.target.value)}
+        >
+          <option disabled selected value>
+            {' -- select an option -- '}
+          </option>
+          {playlists.map((playlist, ix) => (
+            <option key={`playlist-${ix}`} value={playlist.id}>
+              {playlist.name}
+            </option>
+          ))}
+        </select>
+        <div className={styles.modalActions}>
+          <button
+            className={styles.selectPlaylistButton}
+            onClick={onAddTrackToPlaylist}
+            disabled={!selectedPlaylistToAdd}
+          >
+            Okay
+          </button>
+          <button
+            className={styles.closePlaylistButton}
+            onClick={() => setShowAddTrackModal(false)}
+          >
+            Close
+          </button>
+        </div>
+      </Modal>
+    </>
   );
 };
 

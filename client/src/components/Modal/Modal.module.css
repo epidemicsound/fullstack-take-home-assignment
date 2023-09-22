@@ -7,4 +7,12 @@
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
 }

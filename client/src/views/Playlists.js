@@ -36,11 +36,13 @@ const Playlists = () => {
         ))}
       </ul>
       {selectedPlaylist && (
-        <Tracks
-          className={styles.playlistTracks}
-          tracks={selectedPlaylist.tracks}
-          playlistId={selectedPlaylist.id}
-        />
+        <div>
+          <Tracks
+            className={styles.playlistTracks}
+            tracks={selectedPlaylist.tracks}
+            playlistId={selectedPlaylist.id}
+          />
+        </div>
       )}
     </div>
   );

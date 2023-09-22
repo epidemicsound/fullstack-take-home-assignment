@@ -27,11 +27,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetch('http://0.0.0.0:8000/playlists/', { mode: 'cors' })
-      .then(res => res.json())
-      .then(data => {
-        dispatch(setPlaylists(data));
-      });
+    dispatch(setPlaylists());
   }, [dispatch]);
 
   const Views = () => {
