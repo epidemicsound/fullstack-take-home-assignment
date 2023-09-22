@@ -27,7 +27,6 @@ const Tracks = props => {
               y: e.pageY
             });
             setSelectedTrackId(track.id);
-            console.log('Right Click', e.pageX, e.pageY);
           }}
         >
           <TrackRow track={track} handlePlay={handlePlay} />
