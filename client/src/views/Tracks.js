@@ -15,6 +15,7 @@ const Tracks = props => {
 
   return (
     <>
+      {!tracks.length && <span>No tracks</span>}
       {tracks.map((track, ix) => (
         <div
           key={ix}
