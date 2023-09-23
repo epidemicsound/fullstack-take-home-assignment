@@ -5,11 +5,15 @@ import Tracks from './Tracks';
 import { useSelector } from 'react-redux';
 import plus from '../assets/plus.svg';
 import CreatePlaylistModal from '../components/CreatePlaylistModal';
+import PlaylistRowContextMenu from '../components/PlaylistRowContextMenu';
+import useContextMenu from '../hooks/useContextMenu';
 
 const Playlists = () => {
   const [selectedPlaylist, setSelectedPlaylist] = useState(null);
+  const [selectedPlaylistContext, setSelectedPlaylistContext] = useState(null);
   const [showCreatePlaylistModal, setShowCreatePlaylistModal] = useState(false);
   const { playlists } = useSelector(state => state.player);
+  const { clicked, setClicked, points, setPoints } = useContextMenu();
 
   const handleSelectPlaylist = playlist => {
     setSelectedPlaylist(playlist);
@@ -35,6 +39,15 @@ const Playlists = () => {
               key={`playlist-${ix}`}
               className={styles.playlistItem__container}
               onClick={() => handleSelectPlaylist(playlist)}
+              onContextMenu={e => {
+                e.preventDefault();
+                setClicked(true);
+                setPoints({
+                  x: e.pageX,
+                  y: e.pageY
+                });
+                setSelectedPlaylistContext(playlist);
+              }}
             >
               <li
                 className={`${styles.playlistItem__title} ${
@@ -77,6 +90,11 @@ const Playlists = () => {
       <CreatePlaylistModal
         show={showCreatePlaylistModal}
         setShowCreatePlaylistModal={setShowCreatePlaylistModal}
+      />
+      <PlaylistRowContextMenu
+        playlistId={selectedPlaylistContext?.id}
+        clicked={clicked}
+        points={points}
       />
     </>
   );

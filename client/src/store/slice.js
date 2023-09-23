@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   addTrackToPlaylist,
   createPlaylist,
+  deletePlaylist,
   removeTrackFromPlaylist,
   setCurrentTrack,
   setPlaylists
@@ -21,6 +22,7 @@ const playerSlice = createSlice({
       .addCase(setCurrentTrack, (state, action) => {
         state.currentTrack = action.payload;
       })
+      // TODO: handle all the pending (loading screen) and rejected (error popup) cases
       .addCase(setPlaylists.fulfilled, (state, action) => {
         state.playlists = action.payload;
       })
@@ -41,6 +43,12 @@ const playerSlice = createSlice({
       })
       .addCase(createPlaylist.fulfilled, (state, action) => {
         state.playlists.push(action.payload);
+      })
+      .addCase(deletePlaylist.fulfilled, (state, action) => {
+        console.log('action', action.payload);
+        state.playlists = state.playlists.filter(
+          playlist => playlist.id !== action.payload.id
+        );
       });
   }
 });

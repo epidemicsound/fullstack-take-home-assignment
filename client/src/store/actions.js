@@ -5,8 +5,12 @@ const ACTION_TYPES = {
   ADD_TRACK_TO_PLAYLIST: 'PLAYER/ADD_TRACK_TO_PLAYLIST',
   REMOVE_TRACK_FROM_PLAYLIST: 'PLAYER/REMOVE_TRACK_FROM_PLAYLIST',
   CREATE_PLAYLIST: 'PLAYER/CREATE_PLAYLIST',
+  DELETE_PLAYLIST: 'PLAYER/DELETE_PLAYLIST',
   SET_CURRENT_TRACK: 'PLAYER/SET_CURRENT_TRACK'
 };
+
+// TODO: Use a more robust HTTP API like axios
+// TODO: Store the API URL in a config file
 
 export const setPlaylists = createAsyncThunk(
   ACTION_TYPES.SET_PLAYLISTS,
@@ -65,6 +69,24 @@ export const createPlaylist = createAsyncThunk(
     }).then(res => res.json());
 
     return response;
+  }
+);
+
+export const deletePlaylist = createAsyncThunk(
+  ACTION_TYPES.DELETE_PLAYLIST,
+  async payload => {
+    const { playlistId: id } = payload;
+
+    await fetch('http://0.0.0.0:8000/playlists/', {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id })
+    });
+
+    return { id };
   }
 );
 
