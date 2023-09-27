@@ -5,12 +5,15 @@ import { Provider } from 'react-redux';
 import { tracks } from '../mocks/tracks';
 
 describe('Tracks', () => {
-  it('renders correctly', () => {
+  it('renders the list of tracks correctly', () => {
     render(
       <Provider store={store}>
         <Tracks tracks={tracks} />
       </Provider>
     );
+
+    const trackElements = screen.getAllByTestId(/track-(\d)/);
+    expect(trackElements).toHaveLength(tracks.length);
   });
 
   describe('when a track is right clicked', () => {

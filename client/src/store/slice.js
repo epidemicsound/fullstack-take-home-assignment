@@ -45,7 +45,6 @@ const playerSlice = createSlice({
         state.playlists.push(action.payload);
       })
       .addCase(deletePlaylist.fulfilled, (state, action) => {
-        console.log('action', action.payload);
         state.playlists = state.playlists.filter(
           playlist => playlist.id !== action.payload.id
         );
