@@ -50,5 +50,13 @@ describe('Tracks', () => {
         '-- select an option --'
       );
     });
+
+    // TODO:
+    // add msw to mock API calls, then create tests to test the following:
+    // - setup the test suite to populate the store with playlists
+    // - when a playlist is selected, the track is added to the playlist store
+    // - when a playlist is selected, an API call was made to add the track to the playlist
+    // - when a playlist is selected, the modal is closed
+    // - when a playlist is selected, the context menu is closed
   });
 });
