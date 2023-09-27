@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "jest/globals": true
   },
   "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:react-hooks/recommended"],
   "parserOptions": {
@@ -11,9 +12,17 @@
       "jsx": true
     }
   },
-  "plugins": ["react", "react-hooks", "prettier"],
+  "plugins": ["react", "react-hooks", "prettier", "jest"],
   "rules": {
     "prettier/prettier": "error",
     "react/prop-types": 0
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.js", "**/*.spec.js"],
+      "rules": {
+        "react/react-in-jsx-scope": ["off"]
+      }
+    }
+  ]
 }

@@ -1,8 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import store from './store/store';
+import { Provider } from 'react-redux';
 
 test('renders app with tracks tab', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/tracks/i);
+  render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+  const linkElement = screen.getByText(/No tracks/i);
   expect(linkElement).toBeInTheDocument();
 });

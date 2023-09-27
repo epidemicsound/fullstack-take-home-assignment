@@ -55,6 +55,7 @@ const TrackRowContextMenu = props => {
       <Modal show={showAddTrackModal}>
         <h2>Select playlist</h2>
         <select
+          data-testid='select-playlist-dropdown'
           className={styles.selectPlaylistDropdown}
           value={selectedPlaylistToAdd}
           onChange={e => setSelectedPlaylistToAdd(e.target.value)}

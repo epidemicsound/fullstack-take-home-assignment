@@ -6,7 +6,11 @@ export const ContextMenu = props => {
 
   return (
     <>
-      <div className={styles.contextMenuContainer} style={{ top, left }}>
+      <div
+        className={styles.contextMenuContainer}
+        style={{ top, left }}
+        data-testid='context-menu'
+      >
         <ul className={styles.contextMenuList}>
           {menuData.map(item => (
             <li

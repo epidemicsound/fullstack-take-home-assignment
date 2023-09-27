@@ -29,7 +29,7 @@ const Tracks = props => {
             setSelectedTrackId(track.id);
           }}
         >
-          <TrackRow track={track} handlePlay={handlePlay} />
+          <TrackRow index={ix} track={track} handlePlay={handlePlay} />
         </div>
       ))}
       <TrackRowContextMenu
