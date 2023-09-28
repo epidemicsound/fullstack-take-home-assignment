@@ -25,3 +25,21 @@ class TrackSerializer(serializers.ModelSerializer):
             "waveform",
             "spotify",
         ]
+
+class PlaylistSerializer(serializers.ModelSerializer):
+    tracks = TrackSerializer(many=True)
+
+    class Meta:
+        model = models.Playlist
+        fields = [
+            "id",
+            "name",
+            "created_at",
+            "updated_at",
+            "tracks"
+        ]
+        extra_kwargs = {
+        'tracks': {
+            'required': False,
+        },
+    }

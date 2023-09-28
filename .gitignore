@@ -29,3 +29,5 @@ data/
 
 # Editor/IDE
 .idea/
+
+.env

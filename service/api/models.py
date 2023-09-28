@@ -48,3 +48,17 @@ class Track(models.Model):
     @property
     def spotify(self):
         return "{}{}/{}".format(settings.DSP_BASE, self.id, "spotify")
+
+class Playlist(models.Model):
+    name = models.CharField(max_length=200, null=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    tracks = models.ManyToManyField(Track, related_name="track", blank=True, null=True)
+    
+    def insert_track(self, track):
+        self.tracks.add(track)
+        self.save()
+
+    def remove_track(self, track):
+        self.tracks.remove(track)
+        self.save()
