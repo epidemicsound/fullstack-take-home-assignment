@@ -48,3 +48,15 @@ class Track(models.Model):
     @property
     def spotify(self):
         return "{}{}/{}".format(settings.DSP_BASE, self.id, "spotify")
+
+
+class Playlist(models.Model):
+    name = models.CharField(max_length=250, null=False)
+    created_date = models.DateField(auto_now_add=True)
+    last_updated_date = models.DateField(auto_now=True)
+    tracks = models.ManyToManyField(Track, through='PlaylistTrack', related_name="playlists", blank=True)
+
+
+class PlaylistTrack(models.Model):
+    track = models.ForeignKey(Track, on_delete=models.CASCADE)
+    playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE)
