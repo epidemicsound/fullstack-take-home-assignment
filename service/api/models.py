@@ -67,8 +67,23 @@ class Playlist(models.Model):
             defaults={'order': order or (current_highest_order + 1)}
         )
 
+        if not created:
+            playlist_track.order = order
+            playlist_track.save()
+
+        old_track_with_same_order = PlaylistTrack.objects.filter(playlist=self).exclude(pk=playlist_track.pk).filter(
+            order=playlist_track.order).first()
+        if old_track_with_same_order:
+            PlaylistTrack.objects.filter(playlist=self, order__gte=playlist_track.order).exclude(
+                pk=playlist_track.pk).update(
+                order=models.F('order') + 1)
+
     def remove_track(self, track):
+        removed_track_order = self.playlisttrack_set.filter(track=track).first().order
+
         self.tracks.remove(track)
+
+        PlaylistTrack.objects.filter(playlist=self, order__gt=removed_track_order).update(order=F('order') - 1)
 
 
 class PlaylistTrack(models.Model):
