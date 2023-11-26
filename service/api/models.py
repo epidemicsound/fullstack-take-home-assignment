@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.db.models import Max, F
 
 
 class Artist(models.Model):
@@ -56,7 +57,25 @@ class Playlist(models.Model):
     last_updated_date = models.DateField(auto_now=True)
     tracks = models.ManyToManyField(Track, through='PlaylistTrack', related_name="playlists", blank=True)
 
+    def add_track(self, track_id, order=None):
+        current_highest_order = self.tracks.aggregate(max_order=Max('playlisttrack__order')).get('max_order', 0)
+        track_object = Track.objects.get(pk=track_id)
+
+        playlist_track, created = PlaylistTrack.objects.get_or_create(
+            playlist=self,
+            track=track_object,
+            defaults={'order': order or (current_highest_order + 1)}
+        )
+
+    def remove_track(self, track):
+        self.tracks.remove(track)
+
 
 class PlaylistTrack(models.Model):
     track = models.ForeignKey(Track, on_delete=models.CASCADE)
     playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE)
+    order = models.PositiveSmallIntegerField(default=1, null=False, blank=False)
+
+    class Meta:
+        db_table = 'api_playlist_tracks'
+        unique_together = ('track', 'playlist')
