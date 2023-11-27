@@ -30,3 +30,33 @@
   color: #fff;
   border-bottom: 2px solid #009de0;
 }
+
+.addPlaylist {
+  margin-top: 16px;
+  margin-bottom: 16px; /* Add margin-bottom */
+  display: flex;
+  align-items: center;
+}
+
+.addPlaylist input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 8px;
+  max-width: 300px; /* Limit the width */
+}
+
+.addPlaylist button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  max-width: 120px; /* Limit the width */
+}
+
+.addPlaylist button:hover {
+  background-color: #45a049;
+}
