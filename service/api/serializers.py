@@ -54,4 +54,11 @@ class PlaylistSerializer(serializers.ModelSerializer):
         if 'name' not in data or data['name'] is None:
             raise ValidationError("Name cannot be null.")
 
+        existing_playlists = models.Playlist.objects.filter(name=data['name'])
+        if self.instance and self.instance.id:
+            existing_playlists = existing_playlists.exclude(id=self.instance.id)
+
+        if existing_playlists.exists():
+            raise serializers.ValidationError("A playlist with the same name already exists.")
+
         return data
