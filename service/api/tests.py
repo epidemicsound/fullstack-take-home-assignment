@@ -1,3 +1,4 @@
+# tests.py
 from django.test import TestCase
 from rest_framework.exceptions import ValidationError
 
@@ -28,4 +29,10 @@ class PlaylistSerializerTests(TestCase):
         data = {'name': 'Test Playlist', 'tracks': [{'order': 1}, {'order': 1}]}
         serializer = serializers.PlaylistSerializer(data=data)
         with self.assertRaises(ValidationError):
+            serializer.validate(data)
+
+    def test_validate_duplicate_name(self):
+        data = {'name': 'Test Playlist', 'tracks': [{'order': 1}, {'order': 2}]}
+        serializer = serializers.PlaylistSerializer(data=data)
+        with self.assertRaises(ValidationError) as context:
             serializer.validate(data)
