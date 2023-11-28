@@ -42,3 +42,8 @@ class PlaylistViewSet(viewsets.ViewSet):
             playlist_serializer.save()
 
         return Response(playlist_serializer.data, status.HTTP_200_OK)
+
+    def destroy(self, request, pk=None):
+        playlist = models.Playlist.objects.filter(pk=pk).first()
+        playlist.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
