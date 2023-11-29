@@ -11,6 +11,8 @@ class TrackViewSet(viewsets.ModelViewSet):
 
 
 class PlaylistViewSet(viewsets.ViewSet):
+    permission_classes = [permissions.IsAuthenticated]
+
     def list(self, request):
         playlists = models.Playlist.objects.all()
         serialized_playlists = serializers.PlaylistSerializer(playlists, many=True)

@@ -7,5 +7,6 @@ router.register(r"tracks", views.TrackViewSet)
 router.register(r'playlists', views.PlaylistViewSet, basename='playlist')
 
 urlpatterns = [
-    path("", include(router.urls))
+    path("", include(router.urls)),
+    path('api-auth/', include('rest_framework.urls')),
 ]
