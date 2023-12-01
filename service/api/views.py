@@ -15,6 +15,9 @@ class PlaylistViewSet(viewsets.ViewSet):
 
     def list(self, request):
         playlists = models.Playlist.objects.all()
+        search_term = request.query_params.get('searchTerm')
+        if search_term:
+            playlists = playlists.filter(name__contains=search_term)
         serialized_playlists = serializers.PlaylistSerializer(playlists, many=True)
         return Response(serialized_playlists.data, status.HTTP_200_OK)
 
@@ -24,9 +27,9 @@ class PlaylistViewSet(viewsets.ViewSet):
         return Response(serialized_playlist.data, status.HTTP_200_OK)
 
     def create(self, request):
-        playlist_serializer = serializers.PlaylistSerializer(data=request.data)
+        playlist_serializer = serializers.PlaylistSerializer(data={'name': request.data['name']})
         if playlist_serializer.is_valid(raise_exception=True):
-            playlist_serializer.save()
+            playlist_serializer.save(user=request.user)
         return Response(playlist_serializer.data, status.HTTP_201_CREATED)
 
     def update(self, request, pk=None):

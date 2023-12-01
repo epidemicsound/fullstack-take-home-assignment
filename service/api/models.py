@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.db.models import Max, F
+from django.contrib.auth.models import User
 
 
 class Artist(models.Model):
@@ -56,6 +57,7 @@ class Playlist(models.Model):
     created_date = models.DateField(auto_now_add=True)
     last_updated_date = models.DateField(auto_now=True)
     tracks = models.ManyToManyField(Track, through='PlaylistTrack', related_name="playlists", blank=True)
+    user = models.ForeignKey(User, related_name="playlists", on_delete=models.CASCADE, null=False, blank=False)
 
     def add_track(self, track_id, order=None):
         current_highest_order = self.tracks.aggregate(max_order=Max('playlisttrack__order')).get('max_order', 0)
