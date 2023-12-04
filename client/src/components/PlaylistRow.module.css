@@ -1,0 +1,38 @@
+/* PlaylistRow.module.css */
+.playlistRow {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    border-bottom: 1px solid #333;
+}
+
+.playlistRow:last-child {
+    border-bottom: none;
+}
+
+/* Adjusted class names to match trackRow styles */
+.playlistTitle {
+    font-weight: 600;
+}
+
+.playlistArtist {
+    color: #767676;
+}
+
+.playlistActions {
+    margin-left: 1rem; /* Add margin to the left of delete button */
+}
+
+.deleteButton {
+    background-color: #ff5555; /* Make the delete button red */
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.trackList {
+    margin-top: 10px;
+    padding-left: 20px;
+    border-left: 2px solid #333;
+}
