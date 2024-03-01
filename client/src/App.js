@@ -5,12 +5,16 @@ import logo from "./assets/logo.svg";
 import TrackRow from "./components/TrackRow";
 import AudioPlayer from "./components/AudioPlayer";
 
+// Read backend host from environment variable,
+// but default to localhost
+const BACKEND_HOST = process.env.REACT_APP_BACKEND_HOST || "http://localhost:8000";
+
 function App() {
   const [tracks, setTracks] = useState([]);
   const [currentTrack, setCurrentTrack] = useState();
 
   useEffect(() => {
-    fetch("http://0.0.0.0:8000/tracks/", { mode: "cors" })
+    fetch(`${BACKEND_HOST}/tracks/`, { mode: "cors" })
       .then((res) => res.json())
       .then((data) => setTracks(data));
   }, []);
