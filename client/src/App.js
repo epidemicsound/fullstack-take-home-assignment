@@ -7,7 +7,8 @@ import AudioPlayer from "./components/AudioPlayer";
 
 // Read backend host from environment variable,
 // but default to localhost
-const BACKEND_HOST = process.env.REACT_APP_BACKEND_HOST || "http://localhost:8000";
+const BACKEND_HOST =
+  process.env.REACT_APP_BACKEND_HOST || "http://localhost:8000";
 
 function App() {
   const [tracks, setTracks] = useState([]);
