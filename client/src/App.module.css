@@ -18,19 +18,6 @@
   margin-right: 2rem;
 }
 
-.menu li a {
-  display: block;
-  color: #767676;
-  text-decoration: none;
-  font-size: 1.25rem;
-  padding: 0.5rem 0;
-}
-
-.menu li a.active {
-  color: #fff;
-  border-bottom: 2px solid #009de0;
-}
-
 .menu li button {
   display: block;
   color: #767676;
@@ -39,9 +26,14 @@
   padding: 0.5rem 0;
   background: none;
   border: none;
+  cursor: pointer;
 }
 
 .menu li button.active {
   color: #fff;
   border-bottom: 2px solid #009de0;
+}
+
+.menu li button:hover {
+  color: #fff;
 }

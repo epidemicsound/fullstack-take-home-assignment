@@ -1,0 +1,43 @@
+:root {
+  --editor-bg-color: #1b1b1b;
+  --editor-active-bg-color: #0e0e0e;
+}
+
+.playlistsEditor {
+  display: flex;
+  background-color: var(--editor-active-bg-color);
+  border: 1px solid #555;
+  height: 55vh;
+  overflow-y: auto;
+}
+
+.playlistsEditor .playlistsList {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--editor-bg-color);
+}
+
+.playlistHeader {
+  border: none;
+  border-bottom: 1px solid #555;
+  background-color: transparent;
+  color: #eee;
+  height: 3rem;
+  width: 12rem;
+}
+
+.playlistHeader.active {
+  background-color: var(--editor-active-bg-color);
+  border-left: 2px solid #fff;
+  border-bottom: none;
+}
+
+.playlistHeader:hover {
+  background-color: var(--editor-active-bg-color);
+  cursor: pointer;
+}
+
+.playlistTracks {
+  padding: 0 5rem;
+  width: 100%;
+}

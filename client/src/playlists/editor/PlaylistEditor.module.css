@@ -1,0 +1,21 @@
+.playlistTracks {
+  height: 50vh;
+}
+
+.addedTracksContainer {
+  display: flex;
+  flex-direction: column;
+
+  height: 45%;
+  overflow-y: auto;
+}
+
+.trackResultsContainer {
+  display: flex;
+  flex-direction: column;
+
+  max-height: 30%;
+  overflow-y: auto;
+
+  margin-top: 1rem;
+}

@@ -4,6 +4,7 @@ import logo from "./assets/logo.svg";
 
 import AudioPlayer from "./components/AudioPlayer";
 import TracksContainer from "./tracks/TracksContainer";
+import PlaylistsPage from "./playlists/PlaylistsPage";
 
 function App() {
   const [currentTrack, setCurrentTrack] = useState();
@@ -38,7 +39,7 @@ function App() {
           </ul>
         </nav>
         {tab === "tracks" && <TracksContainer handlePlay={handlePlay} />}
-        {tab === "playlists" && <>Playlists</>}
+        {tab === "playlists" && <PlaylistsPage />}
       </main>
       {currentTrack && <AudioPlayer track={currentTrack} />}
     </>
