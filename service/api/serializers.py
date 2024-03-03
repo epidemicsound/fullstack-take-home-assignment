@@ -28,12 +28,23 @@ class TrackSerializer(serializers.ModelSerializer):
 
 
 class PlaylistSerializer(serializers.ModelSerializer):
-    tracks = TrackSerializer(many=True, read_only=True)
-
     class Meta:
         model = models.Playlist
         fields = [
             "id",
             "title",
-            "tracks",
+        ]
+
+
+class PlaylistTrackSerializer(serializers.ModelSerializer):
+    track = TrackSerializer(read_only=True)
+    playlist = PlaylistSerializer(read_only=True)
+
+    class Meta:
+        model = models.PlaylistTrack
+        fields = [
+            "id",
+            "order",
+            "track",
+            "playlist",
         ]
