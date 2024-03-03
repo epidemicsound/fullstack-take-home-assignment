@@ -5,29 +5,18 @@ import { useEffect, useState } from "react";
 const BACKEND_HOST =
   process.env.REACT_APP_BACKEND_HOST || "http://localhost:8000";
 
-// Stub values for testing purposes
-const STUB_PLAYLISTS = [
-  { id: "1", title: "First playlist", tracks: [] },
-  { id: "2", title: "As melhores", tracks: [] },
-  { id: "3", title: "Festa 120 BPM", tracks: [] },
-];
-
 function usePlaylists() {
   const [playlists, setPlaylists] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchStubPlaylists = () => {
-      setPlaylists(STUB_PLAYLISTS);
-    };
+    const PLAYLISTS_ENDPOINT = `${BACKEND_HOST}/playlists/`;
 
     const fetchPlaylists = async () => {
       setLoading(true);
-      const playlistsEndpoint = `${BACKEND_HOST}/playlists`;
-
       try {
-        const playlistsResponse = await fetch(playlistsEndpoint, {
+        const playlistsResponse = await fetch(PLAYLISTS_ENDPOINT, {
           mode: "cors",
         });
 
@@ -47,7 +36,7 @@ function usePlaylists() {
       setLoading(false);
     };
 
-    fetchStubPlaylists();
+    fetchPlaylists();
   }, []);
 
   return { playlists, error, loading };
@@ -59,9 +48,7 @@ function usePlaylistTracks(playlistId) {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchStubTracks = () => {
-      setTracks([]);
-    };
+    const PLAYLIST_TRACKS_ENDPOINT = `${BACKEND_HOST}/playlists/${playlistId}/`;
 
     const fetchTracks = async () => {
       if (playlistId === undefined) {
@@ -71,10 +58,9 @@ function usePlaylistTracks(playlistId) {
         return;
       }
       setLoading(true);
-      const playlistTracksEndpoint = `${BACKEND_HOST}/playlists/${playlistId}`;
 
       try {
-        const tracksResponse = await fetch(playlistTracksEndpoint, {
+        const tracksResponse = await fetch(PLAYLIST_TRACKS_ENDPOINT, {
           mode: "cors",
         });
 
@@ -85,7 +71,7 @@ function usePlaylistTracks(playlistId) {
         }
 
         const playlistTracksData = await tracksResponse.json();
-        setTracks(playlistTracksData);
+        setTracks(playlistTracksData.tracks);
         setError("");
       } catch (error) {
         setError(error);
@@ -94,7 +80,7 @@ function usePlaylistTracks(playlistId) {
       setLoading(false);
     };
 
-    fetchStubTracks();
+    fetchTracks();
   }, [playlistId]);
 
   return { tracks, error, loading };

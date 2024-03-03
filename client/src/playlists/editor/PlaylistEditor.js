@@ -4,6 +4,7 @@ import PlaylistTrackRow from "./PlaylistTrackRow";
 
 import styles from "./PlaylistEditor.module.css";
 import { usePlaylistTracks } from "../usePlaylists";
+import { savePlaylistChanges } from "./PlaylistService";
 
 function PlaylistEditor({ playlist, allTracks }) {
   const [trackSearch, setTrackSearch] = useState("");
@@ -11,28 +12,73 @@ function PlaylistEditor({ playlist, allTracks }) {
 
   const { tracks } = usePlaylistTracks(playlist?.id);
 
-  const filteredTracks = allTracks.filter((track) =>
-    includeInResult(track, trackSearch, playlistTracks),
-  );
-
   useEffect(() => {
     setPlaylistTracks(tracks);
   }, [tracks]);
 
-  const addToPlaylist = (track) => {
-    setPlaylistTracks([...playlistTracks, track]);
-    //TODO: send change to backend
-  };
-
-  const removeFromPlaylist = (track) => {
-    const newTracks = playlistTracks.filter(({ id }) => id !== track?.id);
-    setPlaylistTracks(newTracks);
-    //TODO: send change to backend
-  };
-
   if (playlist === undefined) {
     return <div className={styles.playlistTracks}></div>;
   }
+
+  const addToPlaylist = (playlistTrack) => {
+    const oldTracks = [...playlistTracks];
+    const newTracks = [...playlistTracks, playlistTrack];
+    setPlaylistTracks(newTracks);
+
+    savePlaylistChanges(playlist.id, playlist.title, newTracks)
+      .then((updatedTracks) => setPlaylistTracks(updatedTracks))
+      .catch((err) => {
+        // Revert changes if post fails
+        console.error(err);
+        setPlaylistTracks(oldTracks);
+      });
+  };
+
+  const removeFromPlaylist = (playlistTrack) => {
+    const oldTracks = [...playlistTracks];
+    const newTracks = playlistTracks.filter(
+      ({ id }) => id !== playlistTrack?.id,
+    );
+    setPlaylistTracks(newTracks);
+
+    savePlaylistChanges(playlist.id, playlist.title, newTracks).catch((err) => {
+      // Revert changes if post fails
+      console.error(err);
+      setPlaylistTracks(oldTracks);
+    });
+  };
+
+  const includeInResult = (track) => {
+    const { id, title, genres, main_artists } = track;
+
+    // do not show if track is already in playlist
+    const trackIdsInPlaylist = playlistTracks.map(({ track }) => track.id);
+    if (trackIdsInPlaylist.find((trackId) => trackId === id)) {
+      return false;
+    }
+
+    if (trackSearch === "") return true;
+
+    if (title.toLocaleLowerCase().includes(trackSearch)) {
+      return true;
+    }
+
+    const artists = main_artists.join(", ").toLocaleLowerCase();
+    if (artists.includes(trackSearch)) {
+      return true;
+    }
+
+    const genresLower = genres.join(", ").toLocaleLowerCase();
+    if (genresLower.includes(trackSearch)) {
+      return true;
+    }
+
+    return false;
+  };
+
+  const filteredTracks = allTracks
+    .filter(includeInResult)
+    .map((track) => ({ track }));
 
   return (
     <div className={styles.playlistTracks}>
@@ -41,10 +87,10 @@ function PlaylistEditor({ playlist, allTracks }) {
       </div>
 
       <div className={styles.addedTracksContainer}>
-        {playlistTracks.map((track) => (
+        {playlistTracks.map((playlistTrack) => (
           <PlaylistTrackRow
-            key={track.id}
-            track={track}
+            key={playlistTrack.track.id}
+            playlistTrack={playlistTrack}
             removeTrack={removeFromPlaylist}
           />
         ))}
@@ -61,40 +107,14 @@ function PlaylistEditor({ playlist, allTracks }) {
       <div className={styles.trackResultsContainer}>
         {filteredTracks.map((track) => (
           <PlaylistTrackRow
-            key={track.id}
-            track={track}
+            key={track.track.id}
+            playlistTrack={track}
             addTrack={addToPlaylist}
           />
         ))}
       </div>
     </div>
   );
-}
-
-function includeInResult(track, searchQuery, playlistTracks) {
-  if (searchQuery === "") return false;
-
-  if (playlistTracks.find(({ id }) => id === track.id)) {
-    // track already in playlist
-    return false;
-  }
-
-  const title = track.title.toLocaleLowerCase();
-  if (title.includes(searchQuery)) {
-    return true;
-  }
-
-  const artists = track.main_artists.join(", ").toLocaleLowerCase();
-  if (artists.includes(searchQuery)) {
-    return true;
-  }
-
-  const genres = track.genres.join(", ").toLocaleLowerCase();
-  if (genres.includes(searchQuery)) {
-    return true;
-  }
-
-  return false;
 }
 
 export default PlaylistEditor;
