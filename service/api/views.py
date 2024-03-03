@@ -41,10 +41,9 @@ class PlaylistViewSet(viewsets.ModelViewSet):
         playlist = models.Playlist.objects.create(title=title)
         playlist.save()
 
-        track_and_order_tuples = self._get_playlist_tracks_from_request(request.data)
-        for (track, order) in track_and_order_tuples:
-            playlistTrack = models.PlaylistTrack.objects.create(track=track, playlist=playlist, order=order)
-            playlistTrack.save()
+        playlist_tracks = self._get_playlist_tracks_from_request(playlist, request.data)
+        for playlist_track in playlist_tracks:
+            playlist_track.save()
 
         return response.Response(serializer.data, status=status.HTTP_201_CREATED)
 
@@ -61,11 +60,16 @@ class PlaylistViewSet(viewsets.ModelViewSet):
         if not serializer.is_valid():
             return response.Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-        track_and_order_tuples = self._get_playlist_tracks_from_request(request.data)
-        for (track, order) in track_and_order_tuples:
-            playlistTrack, _ = models.PlaylistTrack.objects.get_or_create(track=track, playlist=playlist)
-            playlistTrack.order = order
-            playlistTrack.save()
+        # Update and create new PlaylistTrack entries
+        playlist_tracks = self._get_playlist_tracks_from_request(playlist, request.data)
+        for playlist_track in playlist_tracks:
+            playlist_track.save()
+
+        # Delete old PlaylistTrack entries no longer used
+        used_ids = [p_t.id for p_t in playlist_tracks]
+        playlist_tracks_to_delete = [p_t for p_t in models.PlaylistTrack.objects.all() if p_t.id not in used_ids]
+        for to_delete in playlist_tracks_to_delete:
+            to_delete.delete()
 
         serializer.save()
         return response.Response(serializer.data, status=status.HTTP_200_OK)
@@ -87,12 +91,18 @@ class PlaylistViewSet(viewsets.ModelViewSet):
             return None
         return models.Track.objects.get(id=track_data["id"])
 
-    def _get_playlist_tracks_from_request(self, request_data):
+    def _get_playlist_tracks_from_request(self, playlist, request_data):
         playlist_tracks = []
         playlist_tracks_data = request_data.get("tracks", [])
         for playlist_track_data in playlist_tracks_data:
-            track = self._track_from_track_data(playlist_track_data["track"])
-            order = playlist_track_data["order"]
-            if track is not None:
-                playlist_tracks.append((track, order))
+            playlist_track_id = playlist_track_data.get("id", None)
+            playlist_track_order = playlist_track_data.get("order", None)
+            if playlist_track_id is not None:
+                playlist_track = models.PlaylistTrack.objects.get(id=playlist_track_id)
+                playlist_track.order = playlist_track_order
+                playlist_tracks.append(playlist_track)
+            else:
+                track = self._track_from_track_data(playlist_track_data["track"])
+                playlist_track, _ = models.PlaylistTrack.objects.get_or_create(track=track, playlist=playlist, order=playlist_track_order)
+                playlist_tracks.append(playlist_track)
         return playlist_tracks
