@@ -1,0 +1,29 @@
+.playlistHeaderMetadata span {
+  color: var(--text-color-secondary);
+  font-size: smaller;
+}
+
+.playlistHeaderMetadata h2 {
+  color: var(--text-color);
+  font-size: 24px;
+  margin: 0;
+}
+
+.playlistHeaderButtons {
+  display: flex;
+  gap: 0.5em;
+}
+
+.playlistHeaderButtons button {
+  text-transform: uppercase;
+  border: 1px solid var(--text-color-secondary);
+  color: var(--text-color-secondary);
+  background-color: transparent;
+  padding: 0.25em 2em;
+  cursor: pointer;
+}
+
+.playlistHeaderButtons button:hover {
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+}

@@ -1,0 +1,9 @@
+.trackResultsContainer {
+  display: flex;
+  flex-direction: column;
+
+  max-height: 80%;
+  overflow-y: auto;
+
+  margin-top: 1rem;
+}

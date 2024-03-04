@@ -1,3 +1,10 @@
+:root {
+  --text-color: #eee;
+  --text-color-secondary: #888;
+  --editor-bg-color: #1b1b1b;
+  --editor-active-bg-color: #0e0e0e;
+}
+
 .app {
   padding: 4rem;
 }
@@ -18,15 +25,22 @@
   margin-right: 2rem;
 }
 
-.menu li a {
+.menu li button {
   display: block;
   color: #767676;
   text-decoration: none;
   font-size: 1.25rem;
   padding: 0.5rem 0;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-.menu li a.active {
-  color: #fff;
+.menu li button.active {
+  color: var(--text-color);
   border-bottom: 2px solid #009de0;
+}
+
+.menu li button:hover {
+  color: var(--text-color);
 }

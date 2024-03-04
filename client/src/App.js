@@ -1,21 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./App.module.css";
 import logo from "./assets/logo.svg";
 
-import TrackRow from "./components/TrackRow";
-import AudioPlayer from "./components/AudioPlayer";
+import AudioPlayer from "./components/audio-player/AudioPlayer";
+import TracksContainer from "./components/tracks/TracksContainer";
+import PlaylistsPage from "./components/playlists/PlaylistsPage";
 
 function App() {
-  const [tracks, setTracks] = useState([]);
   const [currentTrack, setCurrentTrack] = useState();
-
-  useEffect(() => {
-    fetch("http://0.0.0.0:8000/tracks/", { mode: "cors" })
-      .then((res) => res.json())
-      .then((data) => setTracks(data));
-  }, []);
+  const [tab, setTab] = useState("tracks");
 
   const handlePlay = (track) => setCurrentTrack(track);
+
+  const changeTab = (newTab) => setTab(newTab);
 
   return (
     <>
@@ -24,18 +21,25 @@ function App() {
           <img src={logo} className={styles.logo} alt="Logo" />
           <ul className={styles.menu}>
             <li>
-              <a href="#" className={styles.active}>
+              <button
+                onClick={() => changeTab("tracks")}
+                className={tab === "tracks" ? styles.active : ""}
+              >
                 Tracks
-              </a>
+              </button>
             </li>
             <li>
-              <a href="#">Playlists</a>
+              <button
+                onClick={() => changeTab("playlists")}
+                className={tab === "playlists" ? styles.active : ""}
+              >
+                Playlists
+              </button>
             </li>
           </ul>
         </nav>
-        {tracks.map((track, ix) => (
-          <TrackRow key={ix} track={track} handlePlay={handlePlay} />
-        ))}
+        {tab === "tracks" && <TracksContainer handlePlay={handlePlay} />}
+        {tab === "playlists" && <PlaylistsPage />}
       </main>
       {currentTrack && <AudioPlayer track={currentTrack} />}
     </>

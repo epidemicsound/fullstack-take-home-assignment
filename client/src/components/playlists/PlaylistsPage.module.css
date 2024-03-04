@@ -1,0 +1,39 @@
+.playlistsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.newPlaylistInputs {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.newPlaylistInputs > label {
+  font-size: small;
+}
+
+/* .createPlaylistButton {
+  background-color: #1e1e1e;
+  color: #eee;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  height: 1.5rem;
+  width: 5rem;
+  cursor: pointer;
+} */
+
+.createPlaylistButton {
+  text-transform: uppercase;
+  border: 1px solid var(--text-color-secondary);
+  color: var(--text-color-secondary);
+  background-color: transparent;
+  padding: 0.25em 1.5em;
+  cursor: pointer;
+}
+
+.createPlaylistButton:hover {
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+}

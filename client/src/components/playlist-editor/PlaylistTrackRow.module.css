@@ -1,0 +1,50 @@
+.trackRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3rem;
+  min-height: 3rem;
+  border-bottom: 1px solid #333;
+  color: #767676;
+  padding: 0 1.5rem 0 0.5em;
+}
+
+.trackInfo {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.trackRow:last-child {
+  border-bottom: none;
+}
+
+.trackTitle {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.trackArtist {
+  color: var(--text-color-secondary);
+  font-size: smaller;
+}
+
+.trackButtons {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.trackButtons button {
+  background: none;
+  border: 1px solid var(--text-color-secondary);
+  color: var(--text-color-secondary);
+  border-radius: 50%;
+  padding: 0.25rem 0.55rem;
+}
+
+.trackButtons button:hover {
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+  cursor: pointer;
+}

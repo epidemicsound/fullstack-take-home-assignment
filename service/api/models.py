@@ -48,3 +48,23 @@ class Track(models.Model):
     @property
     def spotify(self):
         return "{}{}/{}".format(settings.DSP_BASE, self.id, "spotify")
+
+
+class Playlist(models.Model):
+    title = models.CharField(max_length=200, null=False)
+    tracks = models.ManyToManyField(Track, through="PlaylistTrack", related_name="track")
+
+
+class PlaylistTrack(models.Model):
+    track = models.ForeignKey(Track, on_delete=models.CASCADE)
+    playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE)
+    order = models.IntegerField()
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                "track",
+                "playlist",
+                name="no_track_duplication_on_playlist",
+            ),
+        ]

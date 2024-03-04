@@ -1,0 +1,42 @@
+.emptyPlaylistsMessage {
+  font-size: smaller;
+  font-style: italic;
+}
+
+.playlistsEditor {
+  display: flex;
+  background-color: var(--editor-active-bg-color);
+  border: 1px solid #555;
+  height: 55vh;
+  overflow-y: auto;
+}
+
+.playlistsEditor .playlistsList {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--editor-bg-color);
+}
+
+.playlistHeader {
+  border: none;
+  border-bottom: 1px solid #555;
+  background-color: transparent;
+  color: var(--text-color);
+  height: 3rem;
+  width: 12rem;
+}
+
+.playlistHeader.active {
+  background-color: var(--editor-active-bg-color);
+  border-left: 2px solid var(--text-color);
+  border-bottom: none;
+}
+
+.playlistHeader:hover {
+  background-color: var(--editor-active-bg-color);
+  cursor: pointer;
+}
+
+.playlistTracks {
+  width: 100%;
+}
