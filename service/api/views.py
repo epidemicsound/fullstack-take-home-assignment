@@ -45,6 +45,7 @@ class PlaylistViewSet(viewsets.ModelViewSet):
         for playlist_track in playlist_tracks:
             playlist_track.save()
 
+        serializer = serializers.PlaylistSerializer(playlist)
         return response.Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def update(self, request, pk=None):
