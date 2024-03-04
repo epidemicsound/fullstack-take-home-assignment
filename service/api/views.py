@@ -68,7 +68,8 @@ class PlaylistViewSet(viewsets.ModelViewSet):
 
         # Delete old PlaylistTrack entries no longer used
         used_ids = [p_t.id for p_t in playlist_tracks]
-        playlist_tracks_to_delete = [p_t for p_t in models.PlaylistTrack.objects.all() if p_t.id not in used_ids]
+        all_playlist_tracks = models.PlaylistTrack.objects.filter(playlist=playlist)
+        playlist_tracks_to_delete = [p_t for p_t in all_playlist_tracks if p_t.id not in used_ids]
         for to_delete in playlist_tracks_to_delete:
             to_delete.delete()
 
