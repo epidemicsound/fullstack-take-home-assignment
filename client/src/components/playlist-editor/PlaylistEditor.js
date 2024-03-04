@@ -52,6 +52,72 @@ function PlaylistEditor({ playlist, allTracks, deletePlaylist }) {
     });
   };
 
+  const moveTrackUp = (track) => {
+    const oldTracks = [...playlistTracks];
+    const trackToMoveUp = oldTracks.find(
+      (playlistTrack) => playlistTrack.track.id === track.id,
+    );
+    if (trackToMoveUp.order === 0) {
+      return;
+    }
+
+    const newOrder = trackToMoveUp.order - 1;
+    const newPlaylistTracks = oldTracks
+      .map((playlistTrack) => {
+        if (playlistTrack.id === trackToMoveUp.id) {
+          return { ...playlistTrack, order: newOrder };
+        }
+        // Move down the old track in that position
+        if (playlistTrack.order === newOrder) {
+          return { ...playlistTrack, order: newOrder + 1 };
+        }
+        return playlistTrack;
+      })
+      .sort((t1, t2) => t1.order - t2.order);
+    setPlaylistTracks(newPlaylistTracks);
+
+    savePlaylistChanges(playlist.id, playlist.title, newPlaylistTracks).catch(
+      (err) => {
+        // Revert changes if post fails
+        console.error(err);
+        setPlaylistTracks(oldTracks);
+      },
+    );
+  };
+
+  const moveTrackDown = (track) => {
+    const oldTracks = [...playlistTracks];
+    const trackToMoveUp = oldTracks.find(
+      (playlistTrack) => playlistTrack.track.id === track.id,
+    );
+    if (trackToMoveUp.order === oldTracks.length - 1) {
+      return;
+    }
+
+    const newOrder = trackToMoveUp.order + 1;
+    const newPlaylistTracks = oldTracks
+      .map((playlistTrack) => {
+        if (playlistTrack.id === trackToMoveUp.id) {
+          return { ...playlistTrack, order: newOrder };
+        }
+        // Move up the old track in that position
+        if (playlistTrack.order === newOrder) {
+          return { ...playlistTrack, order: newOrder - 1 };
+        }
+        return playlistTrack;
+      })
+      .sort((t1, t2) => t1.order - t2.order);
+    setPlaylistTracks(newPlaylistTracks);
+
+    savePlaylistChanges(playlist.id, playlist.title, newPlaylistTracks).catch(
+      (err) => {
+        // Revert changes if post fails
+        console.error(err);
+        setPlaylistTracks(oldTracks);
+      },
+    );
+  };
+
   return (
     <div className={styles.playlistTracks}>
       <div className={styles.playlistHeader}>
@@ -68,6 +134,8 @@ function PlaylistEditor({ playlist, allTracks, deletePlaylist }) {
             key={track.id}
             track={track}
             removeTrack={removeFromPlaylist}
+            moveUp={moveTrackUp}
+            moveDown={moveTrackDown}
           />
         ))}
       </div>
