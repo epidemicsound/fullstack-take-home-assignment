@@ -68,7 +68,7 @@ class PlaylistSerializer(serializers.ModelSerializer):
         # check if orders are not repeated
         unique_orders = set(orders)
         if len(unique_orders) != len(orders):
-            raise serializers.ValidationError(f"PlaylistTrack orders need to be unique")
+            raise serializers.ValidationError("PlaylistTrack orders need to be unique")
 
     def _validate_tracks(self, playlist_tracks):
         tracks = [p_t["track"] for p_t in playlist_tracks]
