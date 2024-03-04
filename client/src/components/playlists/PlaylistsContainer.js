@@ -19,6 +19,14 @@ function PlaylistsContainer({ playlists, deletePlaylist }) {
     return styles.playlistHeader;
   };
 
+  if (playlists === undefined || playlists.length === 0) {
+    return (
+      <span className={styles.emptyPlaylistsMessage}>
+        Create your first playlist!
+      </span>
+    );
+  }
+
   return (
     <div className={styles.playlistsEditor}>
       <div className={styles.playlistsList}>

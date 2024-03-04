@@ -1,3 +1,10 @@
+:root {
+  --text-color: #eee;
+  --text-color-secondary: #888;
+  --editor-bg-color: #1b1b1b;
+  --editor-active-bg-color: #0e0e0e;
+}
+
 .app {
   padding: 4rem;
 }
@@ -30,10 +37,10 @@
 }
 
 .menu li button.active {
-  color: #fff;
+  color: var(--text-color);
   border-bottom: 2px solid #009de0;
 }
 
 .menu li button:hover {
-  color: #fff;
+  color: var(--text-color);
 }

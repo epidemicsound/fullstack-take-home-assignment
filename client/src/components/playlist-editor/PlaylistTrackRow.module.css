@@ -21,11 +21,11 @@
 
 .trackTitle {
   font-weight: 600;
-  color: #eee;
+  color: var(--text-color);
 }
 
 .trackArtist {
-  color: #767676;
+  color: var(--text-color-secondary);
 }
 
 .trackButtons {
@@ -36,14 +36,14 @@
 
 .trackButtons button {
   background: none;
-  border: 1px solid #767676;
-  color: #767676;
+  border: 1px solid var(--text-color-secondary);
+  color: var(--text-color-secondary);
   border-radius: 50%;
   padding: 0.25rem 0.55rem;
 }
 
 .trackButtons button:hover {
-  border: 1px solid #eee;
-  color: #eee;
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
   cursor: pointer;
 }

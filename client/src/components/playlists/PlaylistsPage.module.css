@@ -26,8 +26,8 @@
 
 .createPlaylistButton {
   text-transform: uppercase;
-  border: 1px solid var(--text-color-inactive);
-  color: var(--text-color-inactive);
+  border: 1px solid var(--text-color-secondary);
+  color: var(--text-color-secondary);
   background-color: transparent;
   padding: 0.25em 1.5em;
   cursor: pointer;

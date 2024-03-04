@@ -1,6 +1,6 @@
-:root {
-  --editor-bg-color: #1b1b1b;
-  --editor-active-bg-color: #0e0e0e;
+.emptyPlaylistsMessage {
+  font-size: smaller;
+  font-style: italic;
 }
 
 .playlistsEditor {
@@ -21,14 +21,14 @@
   border: none;
   border-bottom: 1px solid #555;
   background-color: transparent;
-  color: #eee;
+  color: var(--text-color);
   height: 3rem;
   width: 12rem;
 }
 
 .playlistHeader.active {
   background-color: var(--editor-active-bg-color);
-  border-left: 2px solid #fff;
+  border-left: 2px solid var(--text-color);
   border-bottom: none;
 }
 
