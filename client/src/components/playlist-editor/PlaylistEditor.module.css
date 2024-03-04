@@ -1,0 +1,33 @@
+:root {
+  --text-color: #eee;
+  --text-color-inactive: #888;
+}
+
+.playlistTracks {
+  height: 50vh;
+  padding: 1em 5em;
+}
+
+.playlistHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #333;
+
+  height: 10%;
+}
+
+.addedTracksContainer {
+  display: flex;
+  flex-direction: column;
+
+  height: 45%;
+  overflow-y: auto;
+
+  border-bottom: 2px solid #333;
+}
+
+.addSongsContainer {
+  height: 40%;
+}

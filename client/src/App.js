@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import styles from "./App.module.css";
 import logo from "./assets/logo.svg";
 
-import AudioPlayer from "./components/AudioPlayer";
-import TracksContainer from "./tracks/TracksContainer";
-import PlaylistsPage from "./playlists/PlaylistsPage";
+import AudioPlayer from "./components/audio-player/AudioPlayer";
+import TracksContainer from "./components/tracks/TracksContainer";
+import PlaylistsPage from "./components/playlists/PlaylistsPage";
 
 function App() {
   const [currentTrack, setCurrentTrack] = useState();

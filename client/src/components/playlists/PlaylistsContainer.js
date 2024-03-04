@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import PlaylistEditor from "./editor/PlaylistEditor";
+import PlaylistEditor from "../playlist-editor/PlaylistEditor";
 
-import useTracks from "../tracks/useTracks";
+import useTracks from "../../hooks/useTracks";
 
 import styles from "./PlaylistsContainer.module.css";
 
-function PlaylistsContainer({ playlists }) {
+function PlaylistsContainer({ playlists, deletePlaylist }) {
   const [activePlaylistId, setActivePlaylistId] = useState("1");
 
   const activePlaylist = playlists.find(({ id }) => id === activePlaylistId);
@@ -35,7 +35,11 @@ function PlaylistsContainer({ playlists }) {
         })}
       </div>
       <div className={styles.playlistTracks}>
-        <PlaylistEditor playlist={activePlaylist} allTracks={allTracks} />
+        <PlaylistEditor
+          playlist={activePlaylist}
+          allTracks={allTracks}
+          deletePlaylist={deletePlaylist}
+        />
       </div>
     </div>
   );

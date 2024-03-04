@@ -1,6 +1,6 @@
 import React from "react";
 import TrackRow from "./TrackRow";
-import useTracks from "./useTracks";
+import useTracks from "../../hooks/useTracks";
 
 import styles from "./TracksContainer.module.css";
 

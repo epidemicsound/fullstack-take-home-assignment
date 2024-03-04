@@ -1,11 +1,16 @@
 import React from "react";
 import styles from "./PlaylistTrackRow.module.css";
+import { secondsToHumanFriendlyDuration } from "../../util/timeFormatter";
 
-function PlaylistTrackRow({ playlistTrack, addTrack, removeTrack }) {
+function PlaylistTrackRow({ track, addTrack, removeTrack }) {
   const showAdd = addTrack !== undefined;
   const showRemove = removeTrack !== undefined;
 
-  const { title, main_artists, length } = playlistTrack.track;
+  if (track === undefined) {
+    return <></>;
+  }
+
+  const { title, main_artists, length } = track;
 
   return (
     <div className={styles.trackRow}>
@@ -17,21 +22,11 @@ function PlaylistTrackRow({ playlistTrack, addTrack, removeTrack }) {
         </div>
       </div>
       <div className={styles.trackButtons}>
-        {showAdd && <button onClick={() => addTrack(playlistTrack)}>+</button>}
-        {showRemove && (
-          <button onClick={() => removeTrack(playlistTrack)}>-</button>
-        )}
+        {showAdd && <button onClick={() => addTrack(track)}>+</button>}
+        {showRemove && <button onClick={() => removeTrack(track)}>-</button>}
       </div>
     </div>
   );
-}
-
-function secondsToHumanFriendlyDuration(length) {
-  const minutes = Math.floor((length % 3600) / 60);
-  const seconds = length % 60;
-  const minutesStr = String(minutes).padStart(2, "0");
-  const secondsStr = String(seconds).padStart(2, "0");
-  return `${minutesStr}:${secondsStr}`;
 }
 
 export default PlaylistTrackRow;

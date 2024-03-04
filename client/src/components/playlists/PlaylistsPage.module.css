@@ -14,7 +14,7 @@
   font-size: small;
 }
 
-.createPlaylistButton {
+/* .createPlaylistButton {
   background-color: #1e1e1e;
   color: #eee;
   border: 1px solid #eee;
@@ -22,4 +22,18 @@
   height: 1.5rem;
   width: 5rem;
   cursor: pointer;
+} */
+
+.createPlaylistButton {
+  text-transform: uppercase;
+  border: 1px solid var(--text-color-inactive);
+  color: var(--text-color-inactive);
+  background-color: transparent;
+  padding: 0.25em 1.5em;
+  cursor: pointer;
+}
+
+.createPlaylistButton:hover {
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
 }
